@@ -35,3 +35,5 @@ use the editor.
 - Compute adjacent suggestions from the submitted sentence and full search results, not the filtered view, so controls cannot alter the library's recommendations.
 - Switch the document and screen theme attributes together without persistence so portal controls inherit the active theme and dark remains the default.
 - Express exact theme inputs through relative OKLCH CSS variables on `data-theme`, with screen styles centralized in the global stylesheet.
+- Run public live freshness checks only from mounted result cards/table rows using a session-memory queue with six concurrent checks and a shared six-second AbortController deadline per primary/fallback pair; failures retain stored results without error UI.
+- Apply newer live dates to an immutable dataset copy and call the supplied scoreDataset(copy, liveDate) only for that result; preserve snapshot-based search/filter/suggestion inputs to prevent live updates from changing matching or unmounting filtered rows.

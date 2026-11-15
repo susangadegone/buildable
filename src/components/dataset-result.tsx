@@ -4,6 +4,8 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { explainMatch, type QueryAnalysis, type Result } from "@/lib/matching";
 import { LABEL_TEXT, LABEL_ICON, LABEL_COLOR, CADENCE_LABEL, GEOMETRY_LABEL, GRAIN_LABEL, formatRows } from "@/lib/readiness";
+import { useLiveFreshness } from "@/hooks/use-live-freshness";
+import { FreshnessNote } from "@/components/freshness-note";
 
 const factors = [
   { key: "freshness", label: "Freshness", maximum: 35 },
@@ -22,7 +24,8 @@ async function copyText(text: string, label: string) {
 }
 
 export function DatasetResult({ result, analysis, rank }: { result: Result; analysis: QueryAnalysis; rank: number }) {
-  const { dataset, match, score } = result;
+  const live = useLiveFreshness(result);
+  const { dataset, match, score } = live.result;
   const rows = formatRows(dataset.rows);
   const badgeStyle = { "--readiness-color": LABEL_COLOR[score.label] } as CSSProperties;
 
@@ -39,7 +42,7 @@ export function DatasetResult({ result, analysis, rank }: { result: Result; anal
       <p className="dataset-explanation" dangerouslySetInnerHTML={{ __html: explainMatch(dataset, match, analysis, score) }} />
       <div className="dataset-row-strip"><span className="metric-key">What one row is</span><p>{dataset.one_row_is}</p></div>
       <dl className="dataset-metrics">
-        <div><dt className="metric-key">Last updated</dt><dd>{score.daysSinceUpdate === 0 ? "Today" : `${score.daysSinceUpdate}d ago`} <small>{dataset.last_updated}</small></dd></div>
+        <div><dt className="metric-key">Last updated</dt><dd>{score.daysSinceUpdate === 0 ? "Today" : `${score.daysSinceUpdate}d ago`} <small>{dataset.last_updated}</small> <FreshnessNote status={live.status} /></dd></div>
         <div><dt className="metric-key">Update rhythm</dt><dd>{CADENCE_LABEL[dataset.cadence]}</dd></div>
         <div><dt className="metric-key">Geometry</dt><dd>{GEOMETRY_LABEL[dataset.geometry]}</dd></div>
         <div><dt className="metric-key">Shape</dt><dd>{GRAIN_LABEL[dataset.grain]}</dd></div>

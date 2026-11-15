@@ -5,3 +5,5 @@
 - [x] Add result filters, sorting, table view, and library suggestions.
 - [x] Add scoring guidance, provenance footer, and theme switching.
 - [x] Verify counts, sorting, both views, themes, and keyboard access.
+- [ ] Add cached, six-at-a-time public freshness checks with a six-second timeout and endpoint fallback.
+- [ ] Patch only visible cards/table rows after stored rendering; verify success and failure behavior.
