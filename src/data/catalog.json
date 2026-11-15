@@ -1,0 +1,3332 @@
+{
+  "catalog_version": "1.0",
+  "snapshot_date": "2026-11-14",
+  "source": "DataSF (data.sf.gov) Socrata API",
+  "verified_fields": [
+    "id",
+    "name",
+    "category",
+    "last_updated",
+    "rows"
+  ],
+  "assessed_fields": [
+    "cadence",
+    "geometry",
+    "grain",
+    "access",
+    "caveats",
+    "tags",
+    "domains",
+    "readiness"
+  ],
+  "rubric": {
+    "freshness_max": 35,
+    "access_max": 25,
+    "granularity_max": 20,
+    "stability_max": 20,
+    "thresholds": {
+      "ready": "80-100",
+      "usable_with_work": "50-79",
+      "not_available": "0-49"
+    },
+    "hard_gate": "A frozen or superseded dataset is capped at 45 points regardless of other factors."
+  },
+  "dataset_count": 74,
+  "datasets": [
+    {
+      "id": "vw6y-z8j6",
+      "name": "311 Cases",
+      "category": "City Infrastructure",
+      "publisher": "SF311",
+      "last_updated": "2026-11-14",
+      "rows": 9069790,
+      "cadence": "daily",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one service request reported to 311 since 1 July 2008",
+      "caveats": [],
+      "tags": [
+        "311",
+        "complaint",
+        "service request",
+        "pothole",
+        "graffiti",
+        "trash",
+        "garbage",
+        "street cleaning",
+        "encampment",
+        "noise",
+        "report",
+        "resolution",
+        "response time",
+        "sidewalk",
+        "illegal dumping"
+      ],
+      "domains": [
+        "civic311",
+        "infra"
+      ],
+      "readiness": {
+        "score": 100,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 20,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/vw6y-z8j6",
+      "api_endpoint": "https://data.sf.gov/resource/vw6y-z8j6.json"
+    },
+    {
+      "id": "5dms-6zj2",
+      "name": "311 Cases within the last day",
+      "category": "City Infrastructure",
+      "publisher": "SF311",
+      "last_updated": "2026-11-14",
+      "rows": null,
+      "cadence": "daily",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one 311 case opened in the last 24 hours",
+      "caveats": [
+        "Rolling 24-hour window only — there is no history here, so pair it with the full 311 Cases table"
+      ],
+      "tags": [
+        "311",
+        "live",
+        "realtime",
+        "today",
+        "current",
+        "now",
+        "feed",
+        "alert",
+        "complaint",
+        "dashboard"
+      ],
+      "domains": [
+        "civic311",
+        "infra"
+      ],
+      "readiness": {
+        "score": 93,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/5dms-6zj2",
+      "api_endpoint": "https://data.sf.gov/resource/5dms-6zj2.json"
+    },
+    {
+      "id": "zd7k-pf58",
+      "name": "Top 311 Cases By Category",
+      "category": "City Infrastructure",
+      "publisher": "SF311",
+      "last_updated": "2026-11-14",
+      "rows": null,
+      "cadence": "daily",
+      "geometry": "none",
+      "grain": "agg",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "a 311 request category with its case count",
+      "caveats": [
+        "Pre-aggregated — no individual cases and no coordinates"
+      ],
+      "tags": [
+        "311",
+        "category",
+        "summary",
+        "counts",
+        "ranking",
+        "top",
+        "breakdown"
+      ],
+      "domains": [
+        "civic311"
+      ],
+      "readiness": {
+        "score": 79,
+        "label": "Usable with work",
+        "key": "work",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 6,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/zd7k-pf58",
+      "api_endpoint": "https://data.sf.gov/resource/zd7k-pf58.json"
+    },
+    {
+      "id": "24s2-n3bu",
+      "name": "Bike and Scooter 311 Complaints",
+      "category": "Transportation",
+      "publisher": "SF311",
+      "last_updated": "2026-11-01",
+      "rows": null,
+      "cadence": "monthly",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one 311 complaint about a bike or scooter",
+      "caveats": [],
+      "tags": [
+        "bike",
+        "bicycle",
+        "scooter",
+        "micromobility",
+        "complaint",
+        "311",
+        "sidewalk",
+        "parking",
+        "clutter"
+      ],
+      "domains": [
+        "transit",
+        "civic311"
+      ],
+      "readiness": {
+        "score": 100,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 20,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/24s2-n3bu",
+      "api_endpoint": "https://data.sf.gov/resource/24s2-n3bu.json"
+    },
+    {
+      "id": "wg3w-h783",
+      "name": "Police Department Incident Reports: 2018 to Present",
+      "category": "Public Safety",
+      "publisher": "SFPD",
+      "last_updated": "2026-11-14",
+      "rows": 1081888,
+      "cadence": "daily",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one police incident report filed since 2018",
+      "caveats": [
+        "Locations are snapped to the nearest intersection for anonymity — never treat a point as an exact address"
+      ],
+      "tags": [
+        "crime",
+        "police",
+        "safety",
+        "incident",
+        "theft",
+        "burglary",
+        "assault",
+        "robbery",
+        "vandalism",
+        "arrest",
+        "report",
+        "neighborhood safety",
+        "hot spot"
+      ],
+      "domains": [
+        "safety"
+      ],
+      "readiness": {
+        "score": 93,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/wg3w-h783",
+      "api_endpoint": "https://data.sf.gov/resource/wg3w-h783.json"
+    },
+    {
+      "id": "tmnf-yvry",
+      "name": "Police Department Incident Reports: Historical 2003 to May 2018",
+      "category": "Public Safety",
+      "publisher": "SFPD",
+      "last_updated": "2025-06-20",
+      "rows": null,
+      "cadence": "frozen",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": true,
+      "one_row_is": "one police incident report from 2003 to May 2018",
+      "caveats": [
+        "Superseded by the 2018-to-present dataset",
+        "The legacy CABLE mainframe feed was shut off in May 2018, so nothing new arrives"
+      ],
+      "tags": [
+        "crime",
+        "police",
+        "historical",
+        "history",
+        "long term",
+        "trend",
+        "2003",
+        "archive",
+        "incident"
+      ],
+      "domains": [
+        "safety"
+      ],
+      "readiness": {
+        "score": 45,
+        "label": "Not available yet",
+        "key": "none",
+        "freshness": 0,
+        "access": 25,
+        "granularity": 20,
+        "stability": 0,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/tmnf-yvry",
+      "api_endpoint": "https://data.sf.gov/resource/tmnf-yvry.json"
+    },
+    {
+      "id": "huqr-9p9x",
+      "name": "Police Department Investigated Hate Crimes",
+      "category": "Public Safety",
+      "publisher": "SFPD",
+      "last_updated": "2026-10-20",
+      "rows": null,
+      "cadence": "monthly",
+      "geometry": "none",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one hate crime SFPD investigated and reported to the state",
+      "caveats": [
+        "Investigated cases only — this undercounts incidents that were reported but not opened as investigations"
+      ],
+      "tags": [
+        "hate crime",
+        "bias",
+        "discrimination",
+        "safety",
+        "police",
+        "victim",
+        "community",
+        "equity"
+      ],
+      "domains": [
+        "safety",
+        "equity"
+      ],
+      "readiness": {
+        "score": 84,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 11,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/huqr-9p9x",
+      "api_endpoint": "https://data.sf.gov/resource/huqr-9p9x.json"
+    },
+    {
+      "id": "cd9v-umhr",
+      "name": "Police Department Reported Victim and Suspect Demographic Data",
+      "category": "Public Safety",
+      "publisher": "SFPD",
+      "last_updated": "2026-11-05",
+      "rows": null,
+      "cadence": "monthly",
+      "geometry": "none",
+      "grain": "agg",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "an aggregated count of victims or suspects by demographic group",
+      "caveats": [
+        "Aggregated counts only — cannot be linked back to individual incident reports"
+      ],
+      "tags": [
+        "demographic",
+        "victim",
+        "suspect",
+        "equity",
+        "disparity",
+        "race",
+        "age",
+        "gender",
+        "crime",
+        "police"
+      ],
+      "domains": [
+        "safety",
+        "equity"
+      ],
+      "readiness": {
+        "score": 79,
+        "label": "Usable with work",
+        "key": "work",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 6,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/cd9v-umhr",
+      "api_endpoint": "https://data.sf.gov/resource/cd9v-umhr.json"
+    },
+    {
+      "id": "ci9u-8awy",
+      "name": "Reference: Police Department Incident Code Crosswalk",
+      "category": "Public Safety",
+      "publisher": "SFPD",
+      "last_updated": "2024-03-13",
+      "rows": null,
+      "cadence": "static",
+      "geometry": "none",
+      "grain": "ref",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one incident code and what it actually means",
+      "caveats": [
+        "A lookup table, not a dataset in itself — you need it to make the incident codes readable"
+      ],
+      "tags": [
+        "reference",
+        "lookup",
+        "code",
+        "crosswalk",
+        "join",
+        "decode",
+        "category",
+        "police",
+        "crime"
+      ],
+      "domains": [
+        "safety",
+        "reference"
+      ],
+      "readiness": {
+        "score": 81,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 8,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/ci9u-8awy",
+      "api_endpoint": "https://data.sf.gov/resource/ci9u-8awy.json"
+    },
+    {
+      "id": "ubvf-ztfx",
+      "name": "Traffic Crashes Resulting in Injury",
+      "category": "Public Safety",
+      "publisher": "SFMTA / DPH",
+      "last_updated": "2026-10-07",
+      "rows": 66384,
+      "cadence": "monthly",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one traffic crash in SF that injured someone",
+      "caveats": [
+        "TransBase, the old front end for this data, has been retired — tutorials and links pointing there no longer work"
+      ],
+      "tags": [
+        "traffic",
+        "crash",
+        "collision",
+        "accident",
+        "injury",
+        "vision zero",
+        "pedestrian",
+        "cyclist",
+        "bike",
+        "safety",
+        "intersection",
+        "dangerous",
+        "street",
+        "road",
+        "speed"
+      ],
+      "domains": [
+        "transit",
+        "safety"
+      ],
+      "readiness": {
+        "score": 93,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/ubvf-ztfx",
+      "api_endpoint": "https://data.sf.gov/resource/ubvf-ztfx.json"
+    },
+    {
+      "id": "dau3-4s8f",
+      "name": "Traffic Crashes Resulting in Fatality",
+      "category": "Public Safety",
+      "publisher": "SFMTA / DPH",
+      "last_updated": "2026-09-25",
+      "rows": 370,
+      "cadence": "monthly",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one traffic crash in SF that killed someone",
+      "caveats": [
+        "Only 370 rows — far too few for prediction or modelling, though strong for a map or a memorial"
+      ],
+      "tags": [
+        "fatality",
+        "death",
+        "traffic",
+        "crash",
+        "vision zero",
+        "pedestrian",
+        "cyclist",
+        "safety",
+        "dangerous",
+        "intersection"
+      ],
+      "domains": [
+        "transit",
+        "safety"
+      ],
+      "readiness": {
+        "score": 93,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/dau3-4s8f",
+      "api_endpoint": "https://data.sf.gov/resource/dau3-4s8f.json"
+    },
+    {
+      "id": "8gtc-pjc6",
+      "name": "Traffic Crashes Resulting in Injury: Parties Involved",
+      "category": "Public Safety",
+      "publisher": "SFMTA / DPH",
+      "last_updated": "2026-10-07",
+      "rows": null,
+      "cadence": "monthly",
+      "geometry": "none",
+      "grain": "join",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one party (driver, cyclist, pedestrian) in a crash",
+      "caveats": [
+        "Party-level table — useless on its own, you must join it to the main crash table on the case id"
+      ],
+      "tags": [
+        "crash",
+        "party",
+        "driver",
+        "cyclist",
+        "pedestrian",
+        "vehicle",
+        "traffic",
+        "join",
+        "detail"
+      ],
+      "domains": [
+        "transit",
+        "safety"
+      ],
+      "readiness": {
+        "score": 79,
+        "label": "Usable with work",
+        "key": "work",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 6,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/8gtc-pjc6",
+      "api_endpoint": "https://data.sf.gov/resource/8gtc-pjc6.json"
+    },
+    {
+      "id": "nwes-mmgh",
+      "name": "Traffic Crashes Resulting in Injury: Victims Involved",
+      "category": "Public Safety",
+      "publisher": "SFMTA / DPH",
+      "last_updated": "2026-10-07",
+      "rows": null,
+      "cadence": "monthly",
+      "geometry": "none",
+      "grain": "join",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one injured person in a crash",
+      "caveats": [
+        "Victim-level table — must be joined to the main crash table on the case id"
+      ],
+      "tags": [
+        "crash",
+        "victim",
+        "injury",
+        "severity",
+        "traffic",
+        "pedestrian",
+        "cyclist",
+        "join",
+        "detail"
+      ],
+      "domains": [
+        "transit",
+        "safety"
+      ],
+      "readiness": {
+        "score": 79,
+        "label": "Usable with work",
+        "key": "work",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 6,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/nwes-mmgh",
+      "api_endpoint": "https://data.sf.gov/resource/nwes-mmgh.json"
+    },
+    {
+      "id": "2h9e-jjp9",
+      "name": "Traffic Crashes Resulting in Injury & 2024 High Injury Network",
+      "category": "Public Safety",
+      "publisher": "SFMTA",
+      "last_updated": "2026-10-07",
+      "rows": null,
+      "cadence": "monthly",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "an injury crash, tagged against the streets that carry most of SF's serious injuries",
+      "caveats": [
+        "Bundles a specific year's High Injury Network — check which year before you quote it"
+      ],
+      "tags": [
+        "high injury network",
+        "vision zero",
+        "crash",
+        "dangerous street",
+        "corridor",
+        "traffic",
+        "safety",
+        "priority",
+        "route"
+      ],
+      "domains": [
+        "transit",
+        "safety"
+      ],
+      "readiness": {
+        "score": 93,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/2h9e-jjp9",
+      "api_endpoint": "https://data.sf.gov/resource/2h9e-jjp9.json"
+    },
+    {
+      "id": "wr8u-xric",
+      "name": "Fire Incidents",
+      "category": "Public Safety",
+      "publisher": "SFFD",
+      "last_updated": "2026-09-30",
+      "rows": 733061,
+      "cadence": "monthly",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one non-medical incident the fire department responded to",
+      "caveats": [
+        "Federal reporting requirements changed on 1 Jan 2026, so fields before and after that date do not line up"
+      ],
+      "tags": [
+        "fire",
+        "incident",
+        "emergency",
+        "response",
+        "building",
+        "hazard",
+        "safety",
+        "smoke",
+        "alarm"
+      ],
+      "domains": [
+        "safety"
+      ],
+      "readiness": {
+        "score": 93,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/wr8u-xric",
+      "api_endpoint": "https://data.sf.gov/resource/wr8u-xric.json"
+    },
+    {
+      "id": "nuek-vuh3",
+      "name": "Fire Department and Emergency Medical Services Dispatched Calls for Service",
+      "category": "Public Safety",
+      "publisher": "SFFD",
+      "last_updated": "2026-11-14",
+      "rows": 7468485,
+      "cadence": "daily",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one fire or ambulance unit dispatched to a 911 call",
+      "caveats": [
+        "7.5 million rows — you must filter and paginate server-side; a naive pull will time out"
+      ],
+      "tags": [
+        "911",
+        "emergency",
+        "ambulance",
+        "ems",
+        "medical",
+        "fire",
+        "dispatch",
+        "response time",
+        "call",
+        "overdose",
+        "health"
+      ],
+      "domains": [
+        "safety",
+        "health"
+      ],
+      "readiness": {
+        "score": 93,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/nuek-vuh3",
+      "api_endpoint": "https://data.sf.gov/resource/nuek-vuh3.json"
+    },
+    {
+      "id": "giw5-ttjs",
+      "name": "San Francisco Police Department Drone Flight Logs",
+      "category": "Public Safety",
+      "publisher": "SFPD",
+      "last_updated": "2026-10-22",
+      "rows": null,
+      "cadence": "monthly",
+      "geometry": "none",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one police drone flight and why it was flown",
+      "caveats": [
+        "The reason-for-flight field switched from free text to radio codes on 1 Sep 2025, so values before and after are not comparable"
+      ],
+      "tags": [
+        "drone",
+        "surveillance",
+        "police",
+        "accountability",
+        "transparency",
+        "oversight",
+        "civil liberties",
+        "flight"
+      ],
+      "domains": [
+        "safety",
+        "gov"
+      ],
+      "readiness": {
+        "score": 84,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 11,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/giw5-ttjs",
+      "api_endpoint": "https://data.sf.gov/resource/giw5-ttjs.json"
+    },
+    {
+      "id": "i98e-djp9",
+      "name": "Building Permits",
+      "category": "Housing and Buildings",
+      "publisher": "DBI",
+      "last_updated": "2026-11-14",
+      "rows": 1298286,
+      "cadence": "daily",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one building permit application and its status",
+      "caveats": [
+        "Since 10 Dec 2024 this dataset only publishes NEW rows — existing permits are no longer updated in place, so status fields on older rows go stale"
+      ],
+      "tags": [
+        "permit",
+        "building",
+        "construction",
+        "development",
+        "renovation",
+        "adu",
+        "housing",
+        "dbi",
+        "approval",
+        "zoning",
+        "contractor",
+        "remodel"
+      ],
+      "domains": [
+        "housing"
+      ],
+      "readiness": {
+        "score": 93,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/i98e-djp9",
+      "api_endpoint": "https://data.sf.gov/resource/i98e-djp9.json"
+    },
+    {
+      "id": "p4e4-a5a7",
+      "name": "Building Permits filed on or after January 1, 2013",
+      "category": "Housing and Buildings",
+      "publisher": "DBI",
+      "last_updated": "2026-11-14",
+      "rows": null,
+      "cadence": "daily",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "a building permit filed from 2013 onward",
+      "caveats": [
+        "A filtered view of Building Permits — it inherits the same new-rows-only limitation"
+      ],
+      "tags": [
+        "permit",
+        "building",
+        "construction",
+        "recent",
+        "2013",
+        "filtered",
+        "housing",
+        "development"
+      ],
+      "domains": [
+        "housing"
+      ],
+      "readiness": {
+        "score": 93,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/p4e4-a5a7",
+      "api_endpoint": "https://data.sf.gov/resource/p4e4-a5a7.json"
+    },
+    {
+      "id": "f2jc-ivnc",
+      "name": "Building Permits Deduplicated on Primary Address",
+      "category": "Housing and Buildings",
+      "publisher": "DBI",
+      "last_updated": "2026-11-14",
+      "rows": null,
+      "cadence": "daily",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one address, with a single representative permit",
+      "caveats": [
+        "One row per address — you lose every additional permit at sites that have several"
+      ],
+      "tags": [
+        "permit",
+        "address",
+        "deduplicated",
+        "unique",
+        "building",
+        "property",
+        "join",
+        "lookup"
+      ],
+      "domains": [
+        "housing"
+      ],
+      "readiness": {
+        "score": 93,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/f2jc-ivnc",
+      "api_endpoint": "https://data.sf.gov/resource/f2jc-ivnc.json"
+    },
+    {
+      "id": "3pee-9qhc",
+      "name": "Building Permits Contacts",
+      "category": "Housing and Buildings",
+      "publisher": "DBI",
+      "last_updated": "2026-11-14",
+      "rows": null,
+      "cadence": "daily",
+      "geometry": "none",
+      "grain": "join",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one named contact attached to a permit",
+      "caveats": [
+        "Contact table only — join to Building Permits on the permit number to be useful"
+      ],
+      "tags": [
+        "contact",
+        "applicant",
+        "owner",
+        "permit",
+        "contractor",
+        "join",
+        "detail",
+        "building"
+      ],
+      "domains": [
+        "housing"
+      ],
+      "readiness": {
+        "score": 79,
+        "label": "Usable with work",
+        "key": "work",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 6,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/3pee-9qhc",
+      "api_endpoint": "https://data.sf.gov/resource/3pee-9qhc.json"
+    },
+    {
+      "id": "cw8k-gwb7",
+      "name": "Building Permits with Contractor, Subcontractor, Architect, Designer, or Engineer",
+      "category": "Housing and Buildings",
+      "publisher": "DBI",
+      "last_updated": "2026-11-14",
+      "rows": null,
+      "cadence": "daily",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "a permit already joined to the professionals working on it",
+      "caveats": [
+        "Pre-joined convenience view — wider and slower to query than the base permits table"
+      ],
+      "tags": [
+        "contractor",
+        "architect",
+        "engineer",
+        "designer",
+        "professional",
+        "permit",
+        "building",
+        "construction",
+        "firm",
+        "business"
+      ],
+      "domains": [
+        "housing",
+        "business"
+      ],
+      "readiness": {
+        "score": 93,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/cw8k-gwb7",
+      "api_endpoint": "https://data.sf.gov/resource/cw8k-gwb7.json"
+    },
+    {
+      "id": "tyz3-vt28",
+      "name": "PermitSF Permitting Data",
+      "category": "Housing and Buildings",
+      "publisher": "Permit Center",
+      "last_updated": "2026-11-14",
+      "rows": null,
+      "cadence": "daily",
+      "geometry": "none",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one permit application in the newer PermitSF system",
+      "caveats": [
+        "Overlaps the older Building Permits dataset — confirm which system covers the date range you care about before you combine them"
+      ],
+      "tags": [
+        "permit",
+        "permitting",
+        "application",
+        "new system",
+        "building",
+        "business",
+        "approval",
+        "process",
+        "wait time"
+      ],
+      "domains": [
+        "housing",
+        "business"
+      ],
+      "readiness": {
+        "score": 84,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 11,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/tyz3-vt28",
+      "api_endpoint": "https://data.sf.gov/resource/tyz3-vt28.json"
+    },
+    {
+      "id": "xdht-4php",
+      "name": "Housing Production - 2005-present",
+      "category": "Housing and Buildings",
+      "publisher": "Planning",
+      "last_updated": "2026-11-13",
+      "rows": 6164,
+      "cadence": "monthly",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "a project that completed or partly completed new housing units",
+      "caveats": [],
+      "tags": [
+        "housing production",
+        "units",
+        "built",
+        "completed",
+        "new housing",
+        "supply",
+        "development",
+        "construction",
+        "density",
+        "growth"
+      ],
+      "domains": [
+        "housing"
+      ],
+      "readiness": {
+        "score": 100,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 20,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/xdht-4php",
+      "api_endpoint": "https://data.sf.gov/resource/xdht-4php.json"
+    },
+    {
+      "id": "aaxw-2cb8",
+      "name": "Mayor's Office of Housing and Community Development Affordable Housing Pipeline",
+      "category": "Housing and Buildings",
+      "publisher": "MOHCD",
+      "last_updated": "2026-05-21",
+      "rows": 190,
+      "cadence": "quarterly",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one affordable housing project in the city's pipeline",
+      "caveats": [
+        "A point-in-time snapshot, not a live status feed — the project list lags reality"
+      ],
+      "tags": [
+        "affordable housing",
+        "below market rate",
+        "bmr",
+        "pipeline",
+        "subsidised",
+        "mohcd",
+        "development",
+        "project",
+        "units",
+        "equity"
+      ],
+      "domains": [
+        "housing",
+        "equity"
+      ],
+      "readiness": {
+        "score": 93,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/aaxw-2cb8",
+      "api_endpoint": "https://data.sf.gov/resource/aaxw-2cb8.json"
+    },
+    {
+      "id": "6jgi-cpb4",
+      "name": "San Francisco Development Pipeline",
+      "category": "Housing and Buildings",
+      "publisher": "Planning",
+      "last_updated": "2026-08-28",
+      "rows": null,
+      "cadence": "quarterly",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one development project moving through planning",
+      "caveats": [
+        "Quarter-end snapshot, so expect to be up to a quarter behind"
+      ],
+      "tags": [
+        "development",
+        "pipeline",
+        "planning",
+        "project",
+        "proposed",
+        "construction",
+        "growth",
+        "commercial",
+        "housing",
+        "entitlement"
+      ],
+      "domains": [
+        "housing"
+      ],
+      "readiness": {
+        "score": 93,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/6jgi-cpb4",
+      "api_endpoint": "https://data.sf.gov/resource/6jgi-cpb4.json"
+    },
+    {
+      "id": "beah-shgi",
+      "name": "Soft-Story Properties",
+      "category": "Housing and Buildings",
+      "publisher": "DBI",
+      "last_updated": "2026-10-07",
+      "rows": 4945,
+      "cadence": "weekly",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one building in the mandatory seismic retrofit programme, with its compliance status",
+      "caveats": [
+        "Covers only buildings enrolled in the Mandatory Soft Story Program, not every vulnerable building in SF"
+      ],
+      "tags": [
+        "earthquake",
+        "seismic",
+        "retrofit",
+        "soft story",
+        "building safety",
+        "risk",
+        "resilience",
+        "disaster",
+        "compliance",
+        "hazard",
+        "apartment"
+      ],
+      "domains": [
+        "housing",
+        "safety"
+      ],
+      "readiness": {
+        "score": 73,
+        "label": "Usable with work",
+        "key": "work",
+        "freshness": 15,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/beah-shgi",
+      "api_endpoint": "https://data.sf.gov/resource/beah-shgi.json"
+    },
+    {
+      "id": "5cei-gny5",
+      "name": "Eviction Notices",
+      "category": "Housing and Buildings",
+      "publisher": "Rent Board",
+      "last_updated": "2026-11-14",
+      "rows": 48953,
+      "cadence": "daily",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one eviction notice filed with the Rent Board",
+      "caveats": [
+        "Notices filed, not evictions carried out — many never end in a tenant leaving",
+        "A data problem before Feb 2024 produced duplicate and incorrect rows, so treat the early years carefully"
+      ],
+      "tags": [
+        "eviction",
+        "displacement",
+        "tenant",
+        "renter",
+        "landlord",
+        "housing",
+        "notice",
+        "rent board",
+        "ellis act",
+        "owner move in",
+        "neighborhood",
+        "vulnerable"
+      ],
+      "domains": [
+        "housing",
+        "equity"
+      ],
+      "readiness": {
+        "score": 88,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 8,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/5cei-gny5",
+      "api_endpoint": "https://data.sf.gov/resource/5cei-gny5.json"
+    },
+    {
+      "id": "esx7-7kzy",
+      "name": "Count of Eviction Notices By Analysis Neighborhood and Year",
+      "category": "Housing and Buildings",
+      "publisher": "Rent Board",
+      "last_updated": "2026-11-14",
+      "rows": null,
+      "cadence": "daily",
+      "geometry": "none",
+      "grain": "agg",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "a neighborhood-year with its eviction notice count",
+      "caveats": [
+        "Already aggregated by neighborhood and year — convenient for a chart, useless for mapping individual filings"
+      ],
+      "tags": [
+        "eviction",
+        "neighborhood",
+        "count",
+        "summary",
+        "year",
+        "trend",
+        "aggregated",
+        "chart",
+        "displacement"
+      ],
+      "domains": [
+        "housing",
+        "equity"
+      ],
+      "readiness": {
+        "score": 79,
+        "label": "Usable with work",
+        "key": "work",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 6,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/esx7-7kzy",
+      "api_endpoint": "https://data.sf.gov/resource/esx7-7kzy.json"
+    },
+    {
+      "id": "6swy-cmkq",
+      "name": "Petitions to the Rent Board",
+      "category": "Housing and Buildings",
+      "publisher": "Rent Board",
+      "last_updated": "2026-11-14",
+      "rows": 60231,
+      "cadence": "daily",
+      "geometry": "none",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one petition a tenant or landlord filed with the Rent Board",
+      "caveats": [],
+      "tags": [
+        "rent board",
+        "petition",
+        "tenant",
+        "landlord",
+        "dispute",
+        "rent increase",
+        "capital improvement",
+        "decrease in services",
+        "housing",
+        "renter"
+      ],
+      "domains": [
+        "housing"
+      ],
+      "readiness": {
+        "score": 91,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 11,
+        "stability": 20,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/6swy-cmkq",
+      "api_endpoint": "https://data.sf.gov/resource/6swy-cmkq.json"
+    },
+    {
+      "id": "wmam-7g8d",
+      "name": "Buyout Agreements",
+      "category": "Housing and Buildings",
+      "publisher": "Rent Board",
+      "last_updated": "2026-11-14",
+      "rows": null,
+      "cadence": "daily",
+      "geometry": "none",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one declared or agreed tenant buyout",
+      "caveats": [],
+      "tags": [
+        "buyout",
+        "tenant",
+        "landlord",
+        "displacement",
+        "eviction alternative",
+        "negotiation",
+        "housing",
+        "renter",
+        "rent board"
+      ],
+      "domains": [
+        "housing",
+        "equity"
+      ],
+      "readiness": {
+        "score": 91,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 11,
+        "stability": 20,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/wmam-7g8d",
+      "api_endpoint": "https://data.sf.gov/resource/wmam-7g8d.json"
+    },
+    {
+      "id": "ugv9-ywu3",
+      "name": "Requests for Information Regarding Protected Status Related to Owner Move-In Evictions",
+      "category": "Housing and Buildings",
+      "publisher": "Rent Board",
+      "last_updated": "2026-11-14",
+      "rows": null,
+      "cadence": "daily",
+      "geometry": "none",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one request about a tenant's protected status in an owner move-in eviction",
+      "caveats": [],
+      "tags": [
+        "owner move in",
+        "omi",
+        "protected status",
+        "senior",
+        "disabled",
+        "eviction",
+        "tenant",
+        "displacement",
+        "housing",
+        "vulnerable"
+      ],
+      "domains": [
+        "housing",
+        "equity"
+      ],
+      "readiness": {
+        "score": 91,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 11,
+        "stability": 20,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/ugv9-ywu3",
+      "api_endpoint": "https://data.sf.gov/resource/ugv9-ywu3.json"
+    },
+    {
+      "id": "gdc7-dmcn",
+      "name": "Rent Board Housing Inventory",
+      "category": "Housing and Buildings",
+      "publisher": "Rent Board",
+      "last_updated": "2026-11-14",
+      "rows": 551551,
+      "cadence": "daily",
+      "geometry": "none",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one rental unit as reported by its owner",
+      "caveats": [
+        "Self-reported by owners under the 2022 reporting law, so coverage is uneven",
+        "A data problem was corrected in Mar 2026 — earlier snapshots may disagree with today's"
+      ],
+      "tags": [
+        "rental",
+        "unit",
+        "inventory",
+        "housing stock",
+        "rent controlled",
+        "vacancy",
+        "landlord",
+        "tenant",
+        "apartment",
+        "supply"
+      ],
+      "domains": [
+        "housing"
+      ],
+      "readiness": {
+        "score": 79,
+        "label": "Usable with work",
+        "key": "work",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 11,
+        "stability": 8,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/gdc7-dmcn",
+      "api_endpoint": "https://data.sf.gov/resource/gdc7-dmcn.json"
+    },
+    {
+      "id": "sfnk-6tdn",
+      "name": "Green_Roofs",
+      "category": "Housing and Buildings",
+      "publisher": "Planning",
+      "last_updated": "2024-04-10",
+      "rows": null,
+      "cadence": "static",
+      "geometry": "polygon",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one green roof installation",
+      "caveats": [
+        "Last refreshed April 2024",
+        "The underscored name is a sign of a raw GIS export with little curation"
+      ],
+      "tags": [
+        "green roof",
+        "sustainability",
+        "building",
+        "environment",
+        "climate",
+        "rooftop",
+        "garden",
+        "heat"
+      ],
+      "domains": [
+        "housing",
+        "environment"
+      ],
+      "readiness": {
+        "score": 88,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 8,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/sfnk-6tdn",
+      "api_endpoint": "https://data.sf.gov/resource/sfnk-6tdn.json"
+    },
+    {
+      "id": "g8m3-pdis",
+      "name": "Registered Business Locations - San Francisco",
+      "category": "Economy and Community",
+      "publisher": "Treasurer & Tax Collector",
+      "last_updated": "2026-11-14",
+      "rows": 369536,
+      "cadence": "daily",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one business location registered for city tax",
+      "caveats": [
+        "Tax registration records, not a verified list of open storefronts — plenty of rows are holding companies or long-closed shops",
+        "The schema changed on 6 Jul 2026"
+      ],
+      "tags": [
+        "business",
+        "company",
+        "storefront",
+        "retail",
+        "shop",
+        "restaurant",
+        "commercial",
+        "registration",
+        "license",
+        "opening",
+        "closing",
+        "economy",
+        "corridor",
+        "small business",
+        "vacancy"
+      ],
+      "domains": [
+        "business"
+      ],
+      "readiness": {
+        "score": 88,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 8,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/g8m3-pdis",
+      "api_endpoint": "https://data.sf.gov/resource/g8m3-pdis.json"
+    },
+    {
+      "id": "kvj8-g7jh",
+      "name": "Active Business Locations",
+      "category": "Economy and Community",
+      "publisher": "Treasurer & Tax Collector",
+      "last_updated": "2026-11-14",
+      "rows": null,
+      "cadence": "daily",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one business location with no recorded end date",
+      "caveats": [
+        "A filtered view of Registered Business Locations — same registration-not-reality caveat applies"
+      ],
+      "tags": [
+        "active business",
+        "open",
+        "operating",
+        "storefront",
+        "retail",
+        "shop",
+        "commercial",
+        "economy",
+        "current"
+      ],
+      "domains": [
+        "business"
+      ],
+      "readiness": {
+        "score": 93,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/kvj8-g7jh",
+      "api_endpoint": "https://data.sf.gov/resource/kvj8-g7jh.json"
+    },
+    {
+      "id": "br6x-wnyf",
+      "name": "Business Location Closures - Rolling 5-Year Window",
+      "category": "Economy and Community",
+      "publisher": "Treasurer & Tax Collector",
+      "last_updated": "2026-11-14",
+      "rows": null,
+      "cadence": "daily",
+      "geometry": "none",
+      "grain": "agg",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "a period with its count of business closures",
+      "caveats": [
+        "Rolling five-year window only — there is no deeper history in this view"
+      ],
+      "tags": [
+        "closure",
+        "closed",
+        "shut down",
+        "business",
+        "vacancy",
+        "economy",
+        "recovery",
+        "downtown",
+        "trend",
+        "decline"
+      ],
+      "domains": [
+        "business"
+      ],
+      "readiness": {
+        "score": 79,
+        "label": "Usable with work",
+        "key": "work",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 6,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/br6x-wnyf",
+      "api_endpoint": "https://data.sf.gov/resource/br6x-wnyf.json"
+    },
+    {
+      "id": "rqzj-sfat",
+      "name": "Mobile Food Facility Permit",
+      "category": "Economy and Community",
+      "publisher": "Public Works",
+      "last_updated": "2026-11-05",
+      "rows": 500,
+      "cadence": "weekly",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one permitted food truck or cart location",
+      "caveats": [
+        "Permitted locations, not live truck positions — a truck with a permit may not be parked there today"
+      ],
+      "tags": [
+        "food truck",
+        "mobile food",
+        "cart",
+        "vendor",
+        "street food",
+        "permit",
+        "lunch",
+        "taco",
+        "business",
+        "location",
+        "where to open"
+      ],
+      "domains": [
+        "business",
+        "food"
+      ],
+      "readiness": {
+        "score": 93,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/rqzj-sfat",
+      "api_endpoint": "https://data.sf.gov/resource/rqzj-sfat.json"
+    },
+    {
+      "id": "jjew-r69b",
+      "name": "Mobile Food Schedule",
+      "category": "Economy and Community",
+      "publisher": "Public Works",
+      "last_updated": "2026-11-05",
+      "rows": null,
+      "cadence": "weekly",
+      "geometry": "none",
+      "grain": "join",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one day-and-time slot a permitted food truck may operate",
+      "caveats": [
+        "A child table of Mobile Food Facility Permit — join on the permit to get locations, or you have hours with no place"
+      ],
+      "tags": [
+        "food truck",
+        "schedule",
+        "hours",
+        "day of week",
+        "when",
+        "open",
+        "mobile food",
+        "join",
+        "lunch",
+        "street food"
+      ],
+      "domains": [
+        "business",
+        "food"
+      ],
+      "readiness": {
+        "score": 79,
+        "label": "Usable with work",
+        "key": "work",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 6,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/jjew-r69b",
+      "api_endpoint": "https://data.sf.gov/resource/jjew-r69b.json"
+    },
+    {
+      "id": "34ws-kyf6",
+      "name": "Street Vending Permits",
+      "category": "Economy and Community",
+      "publisher": "Public Works",
+      "last_updated": "2026-11-14",
+      "rows": null,
+      "cadence": "daily",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one street vendor permit and where it applies",
+      "caveats": [],
+      "tags": [
+        "street vending",
+        "vendor",
+        "sidewalk",
+        "permit",
+        "informal economy",
+        "market",
+        "sales",
+        "business",
+        "mission",
+        "enforcement"
+      ],
+      "domains": [
+        "business"
+      ],
+      "readiness": {
+        "score": 100,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 20,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/34ws-kyf6",
+      "api_endpoint": "https://data.sf.gov/resource/34ws-kyf6.json"
+    },
+    {
+      "id": "w6qv-daq5",
+      "name": "Sales Tax by Analysis Neighborhood",
+      "category": "Economy and Community",
+      "publisher": "Controller",
+      "last_updated": "2026-07-21",
+      "rows": null,
+      "cadence": "quarterly",
+      "geometry": "none",
+      "grain": "agg",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "sales tax collected in one neighborhood for one period",
+      "caveats": [
+        "Aggregated to neighborhood to protect taxpayer confidentiality — no business-level figures exist here"
+      ],
+      "tags": [
+        "sales tax",
+        "revenue",
+        "spending",
+        "economy",
+        "neighborhood",
+        "commercial",
+        "retail",
+        "recovery",
+        "corridor",
+        "consumer"
+      ],
+      "domains": [
+        "business",
+        "equity"
+      ],
+      "readiness": {
+        "score": 79,
+        "label": "Usable with work",
+        "key": "work",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 6,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/w6qv-daq5",
+      "api_endpoint": "https://data.sf.gov/resource/w6qv-daq5.json"
+    },
+    {
+      "id": "667d-aah6",
+      "name": "Invest in Neighborhood Areas",
+      "category": "Economy and Community",
+      "publisher": "OEWD",
+      "last_updated": "2024-04-10",
+      "rows": null,
+      "cadence": "static",
+      "geometry": "polygon",
+      "grain": "ref",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one commercial corridor targeted by the city's neighborhood investment programme",
+      "caveats": [
+        "Last refreshed April 2024"
+      ],
+      "tags": [
+        "commercial corridor",
+        "investment",
+        "neighborhood",
+        "small business",
+        "economic development",
+        "boundary",
+        "district",
+        "oewd"
+      ],
+      "domains": [
+        "business",
+        "geo"
+      ],
+      "readiness": {
+        "score": 81,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 8,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/667d-aah6",
+      "api_endpoint": "https://data.sf.gov/resource/667d-aah6.json"
+    },
+    {
+      "id": "ab4h-6ztd",
+      "name": "SFMTA - Parking Citations & Fines",
+      "category": "Transportation",
+      "publisher": "SFMTA",
+      "last_updated": "2026-11-14",
+      "rows": 24143374,
+      "cadence": "daily",
+      "geometry": "none",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one parking ticket and the fine attached to it",
+      "caveats": [
+        "24 million rows — filter server-side and paginate, or you will hang the browser",
+        "Location is a street address string, not coordinates, so mapping means geocoding first"
+      ],
+      "tags": [
+        "parking",
+        "citation",
+        "ticket",
+        "fine",
+        "enforcement",
+        "street cleaning",
+        "meter",
+        "car",
+        "driver",
+        "revenue",
+        "equity",
+        "penalty"
+      ],
+      "domains": [
+        "transit",
+        "gov"
+      ],
+      "readiness": {
+        "score": 79,
+        "label": "Usable with work",
+        "key": "work",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 11,
+        "stability": 8,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/ab4h-6ztd",
+      "api_endpoint": "https://data.sf.gov/resource/ab4h-6ztd.json"
+    },
+    {
+      "id": "6r5h-j298",
+      "name": "SFMTA - Enforced Temporary Tow Zones",
+      "category": "Transportation",
+      "publisher": "SFMTA",
+      "last_updated": "2026-11-14",
+      "rows": null,
+      "cadence": "daily",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one temporary no-parking zone that was actually enforced",
+      "caveats": [],
+      "tags": [
+        "tow",
+        "towing",
+        "no parking",
+        "temporary",
+        "film",
+        "construction",
+        "event",
+        "street",
+        "enforcement",
+        "car",
+        "driver",
+        "alert"
+      ],
+      "domains": [
+        "transit"
+      ],
+      "readiness": {
+        "score": 100,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 20,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/6r5h-j298",
+      "api_endpoint": "https://data.sf.gov/resource/6r5h-j298.json"
+    },
+    {
+      "id": "i28k-bkz6",
+      "name": "Muni Stops",
+      "category": "Transportation",
+      "publisher": "SFMTA",
+      "last_updated": "2026-07-09",
+      "rows": 3260,
+      "cadence": "quarterly",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one Muni bus, rail or cable car stop",
+      "caveats": [],
+      "tags": [
+        "muni",
+        "transit",
+        "bus",
+        "stop",
+        "rail",
+        "streetcar",
+        "cable car",
+        "public transport",
+        "access",
+        "commute",
+        "nearest",
+        "walk"
+      ],
+      "domains": [
+        "transit"
+      ],
+      "readiness": {
+        "score": 100,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 20,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/i28k-bkz6",
+      "api_endpoint": "https://data.sf.gov/resource/i28k-bkz6.json"
+    },
+    {
+      "id": "9exe-acju",
+      "name": "Muni Simple Routes",
+      "category": "Transportation",
+      "publisher": "SFMTA",
+      "last_updated": "2026-04-11",
+      "rows": null,
+      "cadence": "quarterly",
+      "geometry": "line",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one Muni route drawn as a simplified line",
+      "caveats": [
+        "Geometry is simplified for cartography — not precise enough for routing or distance calculations"
+      ],
+      "tags": [
+        "muni",
+        "route",
+        "line",
+        "transit",
+        "bus",
+        "map",
+        "network",
+        "coverage",
+        "commute",
+        "public transport"
+      ],
+      "domains": [
+        "transit"
+      ],
+      "readiness": {
+        "score": 84,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 26,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/9exe-acju",
+      "api_endpoint": "https://data.sf.gov/resource/9exe-acju.json"
+    },
+    {
+      "id": "ygmz-vaxd",
+      "name": "MTA Bike Network Linear Features",
+      "category": "Transportation",
+      "publisher": "SFMTA",
+      "last_updated": "2026-10-24",
+      "rows": 5457,
+      "cadence": "quarterly",
+      "geometry": "line",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one segment of SF's bikeway network",
+      "caveats": [],
+      "tags": [
+        "bike",
+        "bikeway",
+        "bicycle",
+        "lane",
+        "cycling",
+        "network",
+        "route",
+        "protected",
+        "infrastructure",
+        "commute",
+        "safety",
+        "path"
+      ],
+      "domains": [
+        "transit"
+      ],
+      "readiness": {
+        "score": 100,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 20,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/ygmz-vaxd",
+      "api_endpoint": "https://data.sf.gov/resource/ygmz-vaxd.json"
+    },
+    {
+      "id": "hkz3-itiu",
+      "name": "Slow Streets",
+      "category": "Transportation",
+      "publisher": "SFMTA",
+      "last_updated": "2025-05-23",
+      "rows": null,
+      "cadence": "annual",
+      "geometry": "line",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one street segment in the Slow Streets programme",
+      "caveats": [
+        "Last refreshed May 2025",
+        "The programme has been revised since that refresh, so the segment list may not match what is signed on the ground"
+      ],
+      "tags": [
+        "slow streets",
+        "traffic calming",
+        "pedestrian",
+        "bike",
+        "neighborhood",
+        "car free",
+        "street",
+        "safety",
+        "walkable",
+        "open street"
+      ],
+      "domains": [
+        "transit"
+      ],
+      "readiness": {
+        "score": 79,
+        "label": "Usable with work",
+        "key": "work",
+        "freshness": 26,
+        "access": 25,
+        "granularity": 20,
+        "stability": 8,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/hkz3-itiu",
+      "api_endpoint": "https://data.sf.gov/resource/hkz3-itiu.json"
+    },
+    {
+      "id": "hn4j-6fx5",
+      "name": "Bicycle Parking Racks",
+      "category": "Transportation",
+      "publisher": "SFMTA",
+      "last_updated": "2025-05-23",
+      "rows": null,
+      "cadence": "annual",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one bike parking rack location",
+      "caveats": [
+        "Last refreshed May 2025"
+      ],
+      "tags": [
+        "bike parking",
+        "rack",
+        "bicycle",
+        "cycling",
+        "infrastructure",
+        "nearest",
+        "amenity",
+        "theft",
+        "commute"
+      ],
+      "domains": [
+        "transit"
+      ],
+      "readiness": {
+        "score": 84,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 26,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/hn4j-6fx5",
+      "api_endpoint": "https://data.sf.gov/resource/hn4j-6fx5.json"
+    },
+    {
+      "id": "qmdj-wtj2",
+      "name": "Travel Decision Survey 2019",
+      "category": "Transportation",
+      "publisher": "SFMTA",
+      "last_updated": "2025-05-23",
+      "rows": null,
+      "cadence": "frozen",
+      "geometry": "none",
+      "grain": "row",
+      "access": "attachment",
+      "superseded": false,
+      "one_row_is": "one survey response about how someone chooses to travel",
+      "caveats": [
+        "The real data sits in a downloadable spreadsheet attachment, not a queryable API table",
+        "A one-off 2019 survey — never repeated, so there is no trend to build on"
+      ],
+      "tags": [
+        "survey",
+        "travel behaviour",
+        "mode choice",
+        "commute",
+        "attitude",
+        "transit",
+        "driving",
+        "research",
+        "2019"
+      ],
+      "domains": [
+        "transit"
+      ],
+      "readiness": {
+        "score": 27,
+        "label": "Not available yet",
+        "key": "none",
+        "freshness": 0,
+        "access": 8,
+        "granularity": 11,
+        "stability": 8,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/qmdj-wtj2",
+      "api_endpoint": "https://data.sf.gov/resource/qmdj-wtj2.json"
+    },
+    {
+      "id": "tkzw-k3nq",
+      "name": "San Francisco Street Tree Inventory",
+      "category": "City Infrastructure",
+      "publisher": "Public Works",
+      "last_updated": "2026-11-14",
+      "rows": 144533,
+      "cadence": "daily",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one street tree, with species and planting date",
+      "caveats": [
+        "Corrected in place on 9 Sep 2026 — re-pull rather than trusting anything you cached before then"
+      ],
+      "tags": [
+        "tree",
+        "street tree",
+        "canopy",
+        "urban forest",
+        "species",
+        "shade",
+        "heat",
+        "green",
+        "environment",
+        "planting",
+        "maintenance",
+        "neighborhood"
+      ],
+      "domains": [
+        "environment",
+        "infra"
+      ],
+      "readiness": {
+        "score": 93,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/tkzw-k3nq",
+      "api_endpoint": "https://data.sf.gov/resource/tkzw-k3nq.json"
+    },
+    {
+      "id": "uzd4-f6yf",
+      "name": "[ARCHIVED] Street Tree List",
+      "category": "City Infrastructure",
+      "publisher": "Public Works",
+      "last_updated": "2026-09-09",
+      "rows": null,
+      "cadence": "frozen",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": true,
+      "one_row_is": "one street tree, in the retired version of the inventory",
+      "caveats": [
+        "Archived and replaced by the San Francisco Street Tree Inventory — use that instead"
+      ],
+      "tags": [
+        "tree",
+        "street tree",
+        "archived",
+        "old",
+        "canopy",
+        "urban forest",
+        "species"
+      ],
+      "domains": [
+        "environment",
+        "infra"
+      ],
+      "readiness": {
+        "score": 45,
+        "label": "Not available yet",
+        "key": "none",
+        "freshness": 0,
+        "access": 25,
+        "granularity": 20,
+        "stability": 0,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/uzd4-f6yf",
+      "api_endpoint": "https://data.sf.gov/resource/uzd4-f6yf.json"
+    },
+    {
+      "id": "wfq4-upmv",
+      "name": "San Francisco Public Bathrooms and Water Fountains",
+      "category": "City Infrastructure",
+      "publisher": "Public Works",
+      "last_updated": "2026-11-01",
+      "rows": 515,
+      "cadence": "monthly",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one public bathroom or drinking fountain",
+      "caveats": [
+        "Described as a growing list rather than a complete citywide inventory, so absence does not mean nothing is there"
+      ],
+      "tags": [
+        "bathroom",
+        "restroom",
+        "toilet",
+        "water fountain",
+        "drinking water",
+        "public amenity",
+        "nearest",
+        "accessibility",
+        "unhoused",
+        "park",
+        "hygiene"
+      ],
+      "domains": [
+        "infra",
+        "health"
+      ],
+      "readiness": {
+        "score": 93,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/wfq4-upmv",
+      "api_endpoint": "https://data.sf.gov/resource/wfq4-upmv.json"
+    },
+    {
+      "id": "mr6h-cr3u",
+      "name": "Covid-19 Pit Stops",
+      "category": "City Infrastructure",
+      "publisher": "Public Works",
+      "last_updated": "2026-11-14",
+      "rows": null,
+      "cadence": "daily",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one staffed Pit Stop public toilet location",
+      "caveats": [
+        "Still maintained daily despite the COVID-era name — confirm it matches the current Pit Stop programme before you label it in a UI"
+      ],
+      "tags": [
+        "pit stop",
+        "toilet",
+        "bathroom",
+        "restroom",
+        "hygiene",
+        "unhoused",
+        "homeless",
+        "public amenity",
+        "staffed",
+        "nearest",
+        "sanitation"
+      ],
+      "domains": [
+        "infra",
+        "health"
+      ],
+      "readiness": {
+        "score": 93,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/mr6h-cr3u",
+      "api_endpoint": "https://data.sf.gov/resource/mr6h-cr3u.json"
+    },
+    {
+      "id": "hft9-aih3",
+      "name": "Map of Fire Inspections",
+      "category": "Housing and Buildings",
+      "publisher": "SFFD",
+      "last_updated": "2026-09-27",
+      "rows": null,
+      "cadence": "monthly",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one fire safety inspection at a building",
+      "caveats": [],
+      "tags": [
+        "fire inspection",
+        "safety",
+        "building",
+        "violation",
+        "compliance",
+        "landlord",
+        "apartment",
+        "hazard",
+        "enforcement"
+      ],
+      "domains": [
+        "housing",
+        "safety"
+      ],
+      "readiness": {
+        "score": 100,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 20,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/hft9-aih3",
+      "api_endpoint": "https://data.sf.gov/resource/hft9-aih3.json"
+    },
+    {
+      "id": "acdm-wktn",
+      "name": "Parcels – Active and Retired",
+      "category": "Geographic Locations and Boundaries",
+      "publisher": "Assessor-Recorder",
+      "last_updated": "2026-11-14",
+      "rows": 236575,
+      "cadence": "daily",
+      "geometry": "polygon",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one recorded land parcel, active or retired",
+      "caveats": [
+        "Includes retired parcels — filter to active ones or you will double-count properties"
+      ],
+      "tags": [
+        "parcel",
+        "property",
+        "lot",
+        "land",
+        "boundary",
+        "apn",
+        "address",
+        "geocode",
+        "join",
+        "zoning",
+        "real estate",
+        "base layer"
+      ],
+      "domains": [
+        "geo",
+        "housing"
+      ],
+      "readiness": {
+        "score": 93,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/acdm-wktn",
+      "api_endpoint": "https://data.sf.gov/resource/acdm-wktn.json"
+    },
+    {
+      "id": "j2bu-swwd",
+      "name": "Analysis Neighborhoods",
+      "category": "Geographic Locations and Boundaries",
+      "publisher": "DPH / MOHCD",
+      "last_updated": "2025-09-25",
+      "rows": null,
+      "cadence": "static",
+      "geometry": "polygon",
+      "grain": "ref",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one of SF's 41 standard analysis neighborhoods",
+      "caveats": [
+        "This is the boundary set most other SF datasets aggregate to — use it rather than inventing your own neighborhoods"
+      ],
+      "tags": [
+        "neighborhood",
+        "boundary",
+        "district",
+        "geography",
+        "area",
+        "join",
+        "map",
+        "aggregate",
+        "base layer",
+        "reference",
+        "mission",
+        "tenderloin",
+        "bayview"
+      ],
+      "domains": [
+        "geo",
+        "reference"
+      ],
+      "readiness": {
+        "score": 81,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 8,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/j2bu-swwd",
+      "api_endpoint": "https://data.sf.gov/resource/j2bu-swwd.json"
+    },
+    {
+      "id": "jc98-7xvv",
+      "name": "Analysis Neighborhoods to ZIP Code Crosswalk",
+      "category": "Geographic Locations and Boundaries",
+      "publisher": "DataSF",
+      "last_updated": "2024-05-02",
+      "rows": null,
+      "cadence": "static",
+      "geometry": "none",
+      "grain": "ref",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "an overlap between a neighborhood and a ZIP code",
+      "caveats": [
+        "Neighborhoods and ZIPs genuinely overlap, so this is a many-to-many crosswalk, not a clean mapping"
+      ],
+      "tags": [
+        "zip code",
+        "neighborhood",
+        "crosswalk",
+        "lookup",
+        "join",
+        "geography",
+        "reference",
+        "postal",
+        "mapping"
+      ],
+      "domains": [
+        "geo",
+        "reference"
+      ],
+      "readiness": {
+        "score": 81,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 8,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/jc98-7xvv",
+      "api_endpoint": "https://data.sf.gov/resource/jc98-7xvv.json"
+    },
+    {
+      "id": "t65d-x6p8",
+      "name": "Air Pollutant Exposure Zone",
+      "category": "Geographic Locations and Boundaries",
+      "publisher": "Planning / DPH",
+      "last_updated": "2025-08-26",
+      "rows": null,
+      "cadence": "static",
+      "geometry": "polygon",
+      "grain": "ref",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one zone flagged for elevated air pollutant exposure",
+      "caveats": [],
+      "tags": [
+        "air quality",
+        "pollution",
+        "exposure",
+        "asthma",
+        "health",
+        "environment",
+        "zone",
+        "equity",
+        "boundary",
+        "vulnerable",
+        "traffic"
+      ],
+      "domains": [
+        "environment",
+        "health",
+        "equity"
+      ],
+      "readiness": {
+        "score": 88,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 8,
+        "stability": 20,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/t65d-x6p8",
+      "api_endpoint": "https://data.sf.gov/resource/t65d-x6p8.json"
+    },
+    {
+      "id": "w4sk-nq57",
+      "name": "HSH Shelter Waitlist",
+      "category": "Health and Social Services",
+      "publisher": "HSH",
+      "last_updated": "2026-11-14",
+      "rows": 368,
+      "cadence": "daily",
+      "geometry": "none",
+      "grain": "agg",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "a snapshot figure from the shelter reservation waitlist",
+      "caveats": [
+        "A waitlist snapshot, not individual records — you can chart the queue but not follow a person through it"
+      ],
+      "tags": [
+        "shelter",
+        "homeless",
+        "unhoused",
+        "waitlist",
+        "bed",
+        "housing",
+        "hsh",
+        "social services",
+        "capacity",
+        "queue",
+        "need"
+      ],
+      "domains": [
+        "health",
+        "housing",
+        "equity"
+      ],
+      "readiness": {
+        "score": 79,
+        "label": "Usable with work",
+        "key": "work",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 6,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/w4sk-nq57",
+      "api_endpoint": "https://data.sf.gov/resource/w4sk-nq57.json"
+    },
+    {
+      "id": "pyih-qa8i",
+      "name": "Health Inspection Scores (2016-2019)",
+      "category": "Health and Social Services",
+      "publisher": "DPH",
+      "last_updated": "2025-05-14",
+      "rows": 53973,
+      "cadence": "frozen",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one restaurant health inspection between 2016 and 2019",
+      "caveats": [
+        "Frozen: the LIVES publishing standard was retired in 2021, so nothing after 2019 appears here",
+        "There is no current restaurant inspection feed on the open data portal at all"
+      ],
+      "tags": [
+        "restaurant",
+        "food safety",
+        "health inspection",
+        "score",
+        "hygiene",
+        "violation",
+        "eatery",
+        "cafe",
+        "grade",
+        "dining",
+        "yelp"
+      ],
+      "domains": [
+        "health",
+        "business",
+        "food"
+      ],
+      "readiness": {
+        "score": 45,
+        "label": "Not available yet",
+        "key": "none",
+        "freshness": 0,
+        "access": 25,
+        "granularity": 20,
+        "stability": 8,
+        "hard_gate_applied": true
+      },
+      "datasf_url": "https://data.sf.gov/d/pyih-qa8i",
+      "api_endpoint": "https://data.sf.gov/resource/pyih-qa8i.json"
+    },
+    {
+      "id": "xud3-6wfw",
+      "name": "Inspections by Supervisor District",
+      "category": "Health and Social Services",
+      "publisher": "DPH",
+      "last_updated": "2024-03-13",
+      "rows": null,
+      "cadence": "frozen",
+      "geometry": "none",
+      "grain": "agg",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "an inspection count for one supervisor district",
+      "caveats": [
+        "Aggregated and no longer refreshed"
+      ],
+      "tags": [
+        "inspection",
+        "district",
+        "supervisor",
+        "summary",
+        "health",
+        "food safety",
+        "aggregated",
+        "count"
+      ],
+      "domains": [
+        "health",
+        "gov"
+      ],
+      "readiness": {
+        "score": 44,
+        "label": "Not available yet",
+        "key": "none",
+        "freshness": 0,
+        "access": 25,
+        "granularity": 6,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/xud3-6wfw",
+      "api_endpoint": "https://data.sf.gov/resource/xud3-6wfw.json"
+    },
+    {
+      "id": "ubjr-y9qw",
+      "name": "ARCHIVED: Tenderloin Tent Count",
+      "category": "Health and Social Services",
+      "publisher": "DPH",
+      "last_updated": "2025-08-25",
+      "rows": null,
+      "cadence": "frozen",
+      "geometry": "none",
+      "grain": "agg",
+      "access": "api",
+      "superseded": true,
+      "one_row_is": "a daily tent count in the Tenderloin during 2020&ndash;21",
+      "caveats": [
+        "Archived — covers only June 2020 to June 2021 and will never be extended"
+      ],
+      "tags": [
+        "tent",
+        "encampment",
+        "homeless",
+        "unhoused",
+        "tenderloin",
+        "count",
+        "archived",
+        "covid",
+        "street"
+      ],
+      "domains": [
+        "health",
+        "equity"
+      ],
+      "readiness": {
+        "score": 31,
+        "label": "Not available yet",
+        "key": "none",
+        "freshness": 0,
+        "access": 25,
+        "granularity": 6,
+        "stability": 0,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/ubjr-y9qw",
+      "api_endpoint": "https://data.sf.gov/resource/ubjr-y9qw.json"
+    },
+    {
+      "id": "v3fv-x3ux",
+      "name": "Beach Water Quality Monitoring",
+      "category": "Energy and Environment",
+      "publisher": "SFPUC / DPH",
+      "last_updated": "2026-11-14",
+      "rows": null,
+      "cadence": "daily",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one bacteria sample taken at a beach",
+      "caveats": [],
+      "tags": [
+        "water quality",
+        "beach",
+        "swimming",
+        "bacteria",
+        "ocean",
+        "bay",
+        "health",
+        "advisory",
+        "environment",
+        "recreation",
+        "safe",
+        "sample"
+      ],
+      "domains": [
+        "environment",
+        "health"
+      ],
+      "readiness": {
+        "score": 100,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 20,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/v3fv-x3ux",
+      "api_endpoint": "https://data.sf.gov/resource/v3fv-x3ux.json"
+    },
+    {
+      "id": "btm4-e4ak",
+      "name": "San Francisco Communitywide Greenhouse Gas Inventory",
+      "category": "Energy and Environment",
+      "publisher": "SF Environment",
+      "last_updated": "2026-10-21",
+      "rows": null,
+      "cadence": "annual",
+      "geometry": "none",
+      "grain": "agg",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "annual citywide emissions for one sector",
+      "caveats": [
+        "Annual citywide totals only — there is no neighborhood or building breakdown"
+      ],
+      "tags": [
+        "greenhouse gas",
+        "emissions",
+        "carbon",
+        "climate",
+        "sector",
+        "inventory",
+        "citywide",
+        "annual",
+        "sustainability",
+        "target"
+      ],
+      "domains": [
+        "environment"
+      ],
+      "readiness": {
+        "score": 79,
+        "label": "Usable with work",
+        "key": "work",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 6,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/btm4-e4ak",
+      "api_endpoint": "https://data.sf.gov/resource/btm4-e4ak.json"
+    },
+    {
+      "id": "pxac-sadh",
+      "name": "San Francisco Municipal Greenhouse Gas Inventory",
+      "category": "Energy and Environment",
+      "publisher": "SF Environment",
+      "last_updated": "2026-10-30",
+      "rows": null,
+      "cadence": "annual",
+      "geometry": "none",
+      "grain": "agg",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "annual emissions from one part of city government's own operations",
+      "caveats": [
+        "Covers city government operations only, not the city as a whole — easy to confuse with the communitywide inventory"
+      ],
+      "tags": [
+        "greenhouse gas",
+        "emissions",
+        "municipal",
+        "city operations",
+        "government",
+        "carbon",
+        "climate",
+        "fleet",
+        "buildings",
+        "annual"
+      ],
+      "domains": [
+        "environment",
+        "gov"
+      ],
+      "readiness": {
+        "score": 79,
+        "label": "Usable with work",
+        "key": "work",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 6,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/pxac-sadh",
+      "api_endpoint": "https://data.sf.gov/resource/pxac-sadh.json"
+    },
+    {
+      "id": "88g8-5mnd",
+      "name": "Employee Compensation",
+      "category": "City Management and Ethics",
+      "publisher": "Controller",
+      "last_updated": "2026-11-09",
+      "rows": 1180053,
+      "cadence": "quarterly",
+      "geometry": "none",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one city employee's pay for one year",
+      "caveats": [],
+      "tags": [
+        "salary",
+        "compensation",
+        "pay",
+        "employee",
+        "city worker",
+        "payroll",
+        "overtime",
+        "transparency",
+        "department",
+        "budget",
+        "wage"
+      ],
+      "domains": [
+        "gov"
+      ],
+      "readiness": {
+        "score": 91,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 11,
+        "stability": 20,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/88g8-5mnd",
+      "api_endpoint": "https://data.sf.gov/resource/88g8-5mnd.json"
+    },
+    {
+      "id": "xdgd-c79v",
+      "name": "Budget",
+      "category": "City Management and Ethics",
+      "publisher": "Controller",
+      "last_updated": "2026-11-09",
+      "rows": null,
+      "cadence": "annual",
+      "geometry": "none",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "a budgeted amount for one department and purpose",
+      "caveats": [],
+      "tags": [
+        "budget",
+        "spending",
+        "allocation",
+        "department",
+        "fund",
+        "money",
+        "transparency",
+        "fiscal year",
+        "appropriation",
+        "government"
+      ],
+      "domains": [
+        "gov"
+      ],
+      "readiness": {
+        "score": 91,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 11,
+        "stability": 20,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/xdgd-c79v",
+      "api_endpoint": "https://data.sf.gov/resource/xdgd-c79v.json"
+    },
+    {
+      "id": "cqi5-hm2d",
+      "name": "Supplier Contracts",
+      "category": "City Management and Ethics",
+      "publisher": "Controller",
+      "last_updated": "2026-11-09",
+      "rows": null,
+      "cadence": "monthly",
+      "geometry": "none",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one contract between the city and a supplier",
+      "caveats": [],
+      "tags": [
+        "contract",
+        "supplier",
+        "vendor",
+        "procurement",
+        "spending",
+        "award",
+        "transparency",
+        "business",
+        "government",
+        "money"
+      ],
+      "domains": [
+        "gov",
+        "business"
+      ],
+      "readiness": {
+        "score": 91,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 11,
+        "stability": 20,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/cqi5-hm2d",
+      "api_endpoint": "https://data.sf.gov/resource/cqi5-hm2d.json"
+    },
+    {
+      "id": "qkex-vh98",
+      "name": "Citywide Nonprofit Spending",
+      "category": "(uncategorised)",
+      "publisher": "Controller",
+      "last_updated": "2026-10-30",
+      "rows": null,
+      "cadence": "annual",
+      "geometry": "none",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "city spending with one nonprofit organisation",
+      "caveats": [
+        "The portal lists no category for this dataset, so browsing will never surface it — you have to know it exists"
+      ],
+      "tags": [
+        "nonprofit",
+        "spending",
+        "contract",
+        "social services",
+        "funding",
+        "grant",
+        "community",
+        "transparency",
+        "government",
+        "money"
+      ],
+      "domains": [
+        "gov",
+        "equity"
+      ],
+      "readiness": {
+        "score": 84,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 11,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/qkex-vh98",
+      "api_endpoint": "https://data.sf.gov/resource/qkex-vh98.json"
+    },
+    {
+      "id": "nufj-bfbw",
+      "name": "San Francisco City Survey Data",
+      "category": "City Management and Ethics",
+      "publisher": "Controller",
+      "last_updated": "2026-09-30",
+      "rows": null,
+      "cadence": "annual",
+      "geometry": "none",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one resident's answers about city services and quality of life",
+      "caveats": [
+        "Weighted survey responses with margins of error — treat it as opinion data, not a census"
+      ],
+      "tags": [
+        "survey",
+        "resident",
+        "satisfaction",
+        "opinion",
+        "quality of life",
+        "services",
+        "perception",
+        "sentiment",
+        "trust",
+        "neighborhood"
+      ],
+      "domains": [
+        "gov",
+        "equity"
+      ],
+      "readiness": {
+        "score": 84,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 11,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/nufj-bfbw",
+      "api_endpoint": "https://data.sf.gov/resource/nufj-bfbw.json"
+    },
+    {
+      "id": "qvu5-m3a2",
+      "name": "Planning Department Records - Projects",
+      "category": "Economy and Community",
+      "publisher": "Planning",
+      "last_updated": "2026-11-14",
+      "rows": null,
+      "cadence": "daily",
+      "geometry": "none",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one project record in the planning department's system",
+      "caveats": [],
+      "tags": [
+        "planning",
+        "project",
+        "application",
+        "review",
+        "entitlement",
+        "approval",
+        "development",
+        "process",
+        "timeline",
+        "case"
+      ],
+      "domains": [
+        "housing",
+        "gov"
+      ],
+      "readiness": {
+        "score": 91,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 11,
+        "stability": 20,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/qvu5-m3a2",
+      "api_endpoint": "https://data.sf.gov/resource/qvu5-m3a2.json"
+    },
+    {
+      "id": "yitu-d5am",
+      "name": "Film Locations in San Francisco",
+      "category": "Culture and Recreation",
+      "publisher": "Film SF",
+      "last_updated": "2026-09-14",
+      "rows": 2214,
+      "cadence": "quarterly",
+      "geometry": "point",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one scene location from a film shot in SF",
+      "caveats": [
+        "Latitude and longitude columns changed in Dec 2024, so older code against this table may break",
+        "Locations are written as free text and are often approximate"
+      ],
+      "tags": [
+        "film",
+        "movie",
+        "location",
+        "scene",
+        "tourism",
+        "culture",
+        "walking tour",
+        "cinema",
+        "shoot",
+        "landmark",
+        "sightseeing"
+      ],
+      "domains": [
+        "culture"
+      ],
+      "readiness": {
+        "score": 88,
+        "label": "Ready to build",
+        "key": "ready",
+        "freshness": 35,
+        "access": 25,
+        "granularity": 20,
+        "stability": 8,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/yitu-d5am",
+      "api_endpoint": "https://data.sf.gov/resource/yitu-d5am.json"
+    },
+    {
+      "id": "3nje-yn2u",
+      "name": "RPD Parks",
+      "category": "Culture and Recreation",
+      "publisher": "Rec & Park",
+      "last_updated": "2024-04-10",
+      "rows": null,
+      "cadence": "annual",
+      "geometry": "polygon",
+      "grain": "row",
+      "access": "api",
+      "superseded": false,
+      "one_row_is": "one park or open space managed by Rec & Park",
+      "caveats": [
+        "Last refreshed April 2024, though park boundaries change slowly enough that this matters less than it would elsewhere"
+      ],
+      "tags": [
+        "park",
+        "open space",
+        "recreation",
+        "playground",
+        "green space",
+        "outdoors",
+        "nearest",
+        "amenity",
+        "dog",
+        "picnic",
+        "access",
+        "equity"
+      ],
+      "domains": [
+        "culture",
+        "environment"
+      ],
+      "readiness": {
+        "score": 73,
+        "label": "Usable with work",
+        "key": "work",
+        "freshness": 15,
+        "access": 25,
+        "granularity": 20,
+        "stability": 13,
+        "hard_gate_applied": false
+      },
+      "datasf_url": "https://data.sf.gov/d/3nje-yn2u",
+      "api_endpoint": "https://data.sf.gov/resource/3nje-yn2u.json"
+    }
+  ]
+}
