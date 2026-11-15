@@ -3,7 +3,7 @@ import catalog from "@/data/catalog.json";
 import type { Catalog } from "@/lib/types";
 import { search } from "@/lib/search";
 import { scoreDataset } from "@/lib/readiness";
-import { applyLiveFreshness, createFreshnessChecker, legacyDate, metadataDate } from "@/lib/live-freshness";
+import { applyLiveFreshness, cadenceNote, createFreshnessChecker, legacyDate, metadataDate, metadataLicenses, optionalMetadata, type LiveMetadata } from "@/lib/live-freshness";
 
 afterEach(() => { vi.unstubAllGlobals(); vi.useRealTimers(); });
 const stored = search(catalog as Catalog, "where have restaurants been closing").results[0];
@@ -43,14 +43,14 @@ describe("Public endpoint checks", () => {
   it("uses dataUpdatedAt from the primary endpoint", async () => {
     const fetcher = vi.fn().mockResolvedValue(new Response(JSON.stringify({ dataUpdatedAt: "2026-11-14T11:41:59+0000" })));
     vi.stubGlobal("fetch", fetcher);
-    expect(await createFreshnessChecker()("vw6y-z8j6")).toBe("2026-11-14");
+    expect((await createFreshnessChecker()("vw6y-z8j6"))?.date).toBe("2026-11-14");
     expect(fetcher.mock.calls[0]?.[0]).toBe("https://data.sf.gov/api/views/metadata/v1/vw6y-z8j6");
     expect(fetcher).toHaveBeenCalledTimes(1);
   });
   it("falls back to rowsUpdatedAt on a primary error, ignoring dataUpdatedAt there", async () => {
     const fetcher = vi.fn().mockResolvedValueOnce(new Response("", { status: 500 })).mockResolvedValueOnce(new Response(JSON.stringify({ rowsUpdatedAt: Date.parse("2026-11-15T01:00:00Z") / 1000, dataUpdatedAt: "2000-01-01T00:00:00Z" })));
     vi.stubGlobal("fetch", fetcher);
-    expect(await createFreshnessChecker()("vw6y-z8j6")).toBe("2026-11-15");
+    expect((await createFreshnessChecker()("vw6y-z8j6"))?.date).toBe("2026-11-15");
     expect(fetcher.mock.calls[1]?.[0]).toBe("https://data.sf.gov/api/views/vw6y-z8j6.json");
   });
   it("rejects a legacy response lacking rowsUpdatedAt instead of falsely verifying", async () => {
@@ -94,8 +94,8 @@ describe("Session queue", () => {
     expect(request).toHaveBeenCalledTimes(1);
   });
   it("limits active checks to six and drains the queue", async () => {
-    const releases: Array<(value: string | null) => void> = [];
-    const request = vi.fn(() => new Promise<string | null>(resolve => releases.push(resolve)));
+    const releases: Array<(value: LiveMetadata | null) => void> = [];
+    const request = vi.fn(() => new Promise<LiveMetadata | null>(resolve => releases.push(resolve)));
     const checker = createFreshnessChecker(request);
     const promises = Array.from({ length: 8 }, (_, i) => checker(String(i)));
     expect(request).toHaveBeenCalledTimes(6);
@@ -107,5 +107,70 @@ describe("Session queue", () => {
     expect(request).toHaveBeenCalledTimes(8);
     releases.slice(2).forEach(resolve => resolve(null));
     expect(await Promise.all(promises)).toEqual(Array(8).fill(null));
+  });
+});
+
+describe("Optional publisher metadata", () => {
+  it("reads the three optional fields from the same cached request", async () => {
+    const license = "Open Data Commons Public Domain Dedication and License";
+    const fetcher = vi.fn().mockResolvedValue(new Response(JSON.stringify({
+      dataUpdatedAt: "2026-11-14T11:41:59+0000",
+      customFields: { "Publishing Details": { "Publishing frequency": "Daily" } },
+      attribution: "San Francisco 311", license,
+    })));
+    vi.stubGlobal("fetch", fetcher);
+    const checker = createFreshnessChecker();
+    expect(await checker("vw6y-z8j6")).toEqual({ date: "2026-11-14", publishingFrequency: "Daily", attribution: "San Francisco 311", license });
+    await checker("vw6y-z8j6");
+    expect(fetcher).toHaveBeenCalledTimes(1);
+  });
+  it("safely ignores missing, blank, and malformed optional fields", () => {
+    for (const body of [null, undefined, {}, { customFields: null }, { customFields: { "Publishing Details": null } }, { customFields: 7, attribution: 42, license: " " }]) {
+      expect(optionalMetadata(body)).toEqual({ publishingFrequency: undefined, attribution: undefined, license: undefined });
+    }
+    expect(cadenceNote("daily", undefined)).toBeNull();
+    expect(cadenceNote("daily", " ")).toBeNull();
+  });
+  it.each([
+    ["daily", "Daily"], ["daily", "daily"], ["annual", "Annually"], ["annual", "annual"],
+    ["quarterly", "Quarterly"], ["quarterly", "quarterly"], ["daily", "Multiple times per hour"],
+  ] as const)("confirms %s against publisher %s", (cadence, frequency) => {
+    // Assert the actual agreement rule, not its display wording.
+    expect(cadenceNote(cadence, frequency)).toBe(cadenceNote(cadence, cadence));
+    expect(cadenceNote(cadence, frequency)).not.toBeNull();
+    expect(cadenceNote(cadence, frequency)).not.toBe(cadenceNote(cadence === "daily" ? "annual" : "daily", frequency));
+  });
+  it("preserves the publisher's disagreement and never changes cadence or score", async () => {
+    const before = structuredClone(result);
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({
+      dataUpdatedAt: `${result.dataset.last_updated}T11:41:59+0000`,
+      customFields: { "Publishing Details": { "Publishing frequency": "Quarterly" } },
+    }))));
+    const metadata = await createFreshnessChecker()(result.dataset.id);
+    expect(metadata?.publishingFrequency).toBe("Quarterly");
+    expect(cadenceNote(result.dataset.cadence, metadata?.publishingFrequency)).not.toBe(cadenceNote("quarterly", "Quarterly"));
+    expect(applyLiveFreshness(result, metadata?.date ?? null).result.score).toEqual(before.score);
+    expect(result.dataset.cadence).toBe(before.dataset.cadence);
+    expect(result).toEqual(before);
+  });
+  it("retains available optional fields even when the date is missing and fallback fails", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValueOnce(new Response(JSON.stringify({ attribution: "San Francisco 311" }))).mockRejectedValueOnce(new TypeError("offline")));
+    expect(await createFreshnessChecker()("vw6y-z8j6")).toMatchObject({ date: null, attribution: "San Francisco 311" });
+  });
+  it("reads optional fields from the fallback without mixing date formats", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValueOnce(new TypeError("offline")).mockResolvedValueOnce(new Response(JSON.stringify({
+      rowsUpdatedAt: Date.parse("2026-11-14T11:41:59Z") / 1000,
+      customFields: { "Publishing Details": { "Publishing frequency": "Daily" } },
+      attribution: "San Francisco 311", license: { name: "Public Domain" },
+    }))));
+    expect(await createFreshnessChecker()("vw6y-z8j6")).toEqual({ date: "2026-11-14", publishingFrequency: "Daily", attribution: "San Francisco 311", license: "Public Domain" });
+  });
+  it("deduplicates licenses for current search results and omits absent licenses", () => {
+    const metadata = new Map<string, LiveMetadata | null>([
+      ["a", { date: null, license: "Public Domain" }], ["b", { date: null, license: "Public Domain" }],
+      ["c", { date: null }], ["d", { date: null, license: "Another license" }], ["e", null],
+    ]);
+    expect(metadataLicenses(metadata, ["a", "b", "c", "e", "missing"])).toEqual(["Public Domain"]);
+    expect(metadataLicenses(metadata, [])).toEqual([]);
   });
 });
