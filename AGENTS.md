@@ -31,5 +31,5 @@ use the editor.
 
 - Keep the supplied catalogue in `src/data/catalog.json`, engine modules in `src/lib/`, and verification entry in `scripts/verify.ts`; separate dev-only verification from application imports.
 - Keep TypeScript strict mode enabled but disable `noPropertyAccessFromIndexSignature` and `noUncheckedIndexedAccess` to support the immutable supplied engine without rewriting it.
-- Keep the initial screen at `/` with local sentence state only and an empty results region; do not import the engine until result rendering is requested.
+- Keep `/` empty of results until submission; use the supplied search engine without re-ranking, with result presentation isolated in `src/components/dataset-result.tsx` to keep library logic immutable.
 - Express exact theme inputs through relative OKLCH CSS variables on `data-theme`, with screen styles centralized in the global stylesheet.
