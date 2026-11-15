@@ -38,7 +38,7 @@ export function DatasetResult({ result, analysis, rank }: { result: Result; anal
         </div>
         <span className="readiness-badge" style={badgeStyle}>{LABEL_ICON[score.label]} {LABEL_TEXT[score.label]}</span>
       </header>
-      <p className="dataset-meta">{[dataset.publisher, dataset.category].filter(Boolean).join(" · ")} · <a className="dataset-id" href={dataset.datasf_url} target="_blank" rel="noopener noreferrer">{dataset.id}</a></p>
+      <p className="dataset-meta">{[live.attribution ?? dataset.publisher, dataset.category].filter(Boolean).join(" · ")} · <a className="dataset-id" href={dataset.datasf_url} target="_blank" rel="noopener noreferrer">{dataset.id}</a></p>
       <p className="dataset-explanation" dangerouslySetInnerHTML={{ __html: explainMatch(dataset, match, analysis, score) }} />
       <div className="dataset-row-strip"><span className="metric-key">What one row is</span><p>{dataset.one_row_is}</p></div>
       <dl className="dataset-metrics">
@@ -51,7 +51,7 @@ export function DatasetResult({ result, analysis, rank }: { result: Result; anal
       {dataset.caveats.length > 0 && <ul className="dataset-caveats">{dataset.caveats.map((caveat, index) => <li key={index}><span className="caveat-marker" aria-hidden="true">!</span><span>{caveat}</span></li>)}</ul>}
       <details className="dataset-breakdown">
         <summary>Readiness score: {score.total}/100 - see the breakdown</summary>
-        <div className="score-factors">{factors.map(({ key, label, maximum }) => <div className="score-factor" key={key}><span>{label}</span><progress value={score[key]} max={maximum} title={score.why[key]} aria-label={label} /><span className="score-figure">{score[key]}/{maximum}</span></div>)}</div>
+        <div className="score-factors">{factors.map(({ key, label, maximum }) => <div className="score-factor" key={key}><span>{label}</span><progress value={score[key]} max={maximum} title={score.why[key]} aria-label={label} /><span className="score-figure">{score[key]}/{maximum}</span>{key === "freshness" && live.cadenceNote && <small className="publisher-cadence-note">{live.cadenceNote}</small>}</div>)}</div>
         {score.hardGateApplied && <p className="hard-gate">Hard gate applied. This dataset scored higher on the four factors, but it has stopped updating or been replaced, so it is capped at 45.</p>}
       </details>
       <div className="dataset-actions">
