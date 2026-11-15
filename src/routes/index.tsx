@@ -9,7 +9,7 @@ import { ResultsBrowser, ReadinessPill, type ResultFilter, type ResultSort } fro
 import { ReadinessGuide } from "@/components/readiness-guide";
 import { useLiveLicenses } from "@/hooks/use-live-freshness";
 
-const description = "Describe what you're building for San Francisco. See which city datasets fit, and whether you can actually ship with them today.";
+const description = "Describe what you're building for San Francisco. See which city datasets fit, and whether they're ready for real users today.";
 const examples = [
   "A map showing renters which blocks have the most eviction notices filed",
   "An app that tells a food truck owner where they are allowed to park",
