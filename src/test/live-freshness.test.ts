@@ -3,7 +3,7 @@ import catalog from "@/data/catalog.json";
 import type { Catalog } from "@/lib/types";
 import { search } from "@/lib/search";
 import { scoreDataset } from "@/lib/readiness";
-import { applyLiveFreshness, cadenceNote, createFreshnessChecker, legacyDate, metadataDate, metadataLicenses, optionalMetadata, type LiveMetadata } from "@/lib/live-freshness";
+import { applyLiveFreshness, cadenceNote, createFreshnessChecker, legacyDate, metadataDate, metadataLicenses, normalizePublisherCadence, optionalMetadata, type LiveMetadata } from "@/lib/live-freshness";
 
 afterEach(() => { vi.unstubAllGlobals(); vi.useRealTimers(); });
 const stored = search(catalog as Catalog, "where have restaurants been closing").results[0];
@@ -135,10 +135,7 @@ describe("Optional publisher metadata", () => {
     ["daily", "Daily"], ["daily", "daily"], ["annual", "Annually"], ["annual", "annual"],
     ["quarterly", "Quarterly"], ["quarterly", "quarterly"], ["daily", "Multiple times per hour"],
   ] as const)("confirms %s against publisher %s", (cadence, frequency) => {
-    // Assert the actual agreement rule, not its display wording.
-    expect(cadenceNote(cadence, frequency)).toBe(cadenceNote(cadence, cadence));
-    expect(cadenceNote(cadence, frequency)).not.toBeNull();
-    expect(cadenceNote(cadence, frequency)).not.toBe(cadenceNote(cadence === "daily" ? "annual" : "daily", frequency));
+    expect(normalizePublisherCadence(frequency)).toBe(cadence);
   });
   it("preserves the publisher's disagreement and never changes cadence or score", async () => {
     const before = structuredClone(result);
@@ -148,7 +145,8 @@ describe("Optional publisher metadata", () => {
     }))));
     const metadata = await createFreshnessChecker()(result.dataset.id);
     expect(metadata?.publishingFrequency).toBe("Quarterly");
-    expect(cadenceNote(result.dataset.cadence, metadata?.publishingFrequency)).not.toBe(cadenceNote("quarterly", "Quarterly"));
+    expect(normalizePublisherCadence(metadata?.publishingFrequency ?? "")).toBe("quarterly");
+    expect(result.dataset.cadence).toBe("daily");
     expect(applyLiveFreshness(result, metadata?.date ?? null).result.score).toEqual(before.score);
     expect(result.dataset.cadence).toBe(before.dataset.cadence);
     expect(result).toEqual(before);

@@ -4,9 +4,9 @@ import type { Cadence } from "./types";
 
 export interface LiveMetadata {
   date: string | null;
-  publishingFrequency?: string;
-  attribution?: string;
-  license?: string;
+  publishingFrequency?: string | undefined;
+  attribution?: string | undefined;
+  license?: string | undefined;
 }
 
 function record(value: unknown): Record<string, unknown> | undefined {
@@ -27,8 +27,7 @@ export function optionalMetadata(value: unknown): Omit<LiveMetadata, "date"> {
   };
 }
 
-export function cadenceNote(cadence: Cadence, frequency?: string): string | null {
-  if (!frequency?.trim()) return null;
+export function normalizePublisherCadence(frequency: string): Cadence | null {
   const normalized = frequency.trim().toLowerCase().replace(/[-_]/g, " ").replace(/\s+/g, " ");
   const synonyms: Record<string, Cadence> = {
     daily: "daily", day: "daily", "every day": "daily", "once a day": "daily",
@@ -39,7 +38,12 @@ export function cadenceNote(cadence: Cadence, frequency?: string): string | null
     annually: "annual", annual: "annual", yearly: "annual", "every year": "annual",
     static: "static", "one time": "static", "not updated": "frozen", frozen: "frozen",
   };
-  return synonyms[normalized] === cadence ? "cadence confirmed by publisher" : `publisher states ${frequency}`;
+  return synonyms[normalized] ?? null;
+}
+
+export function cadenceNote(cadence: Cadence, frequency?: string): string | null {
+  if (!frequency?.trim()) return null;
+  return normalizePublisherCadence(frequency) === cadence ? "cadence confirmed by publisher" : `publisher states ${frequency}`;
 }
 
 export function metadataLicenses(metadata: ReadonlyMap<string, LiveMetadata | null>, ids: readonly string[]): string[] {
