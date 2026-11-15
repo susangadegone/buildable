@@ -36,10 +36,14 @@ jobs:
           GH_PAGES_BASE: ${{ steps.pages.outputs.base_path || '/' }}
         run: bun run build:gh-pages
 
+      - name: Collect the static files
+        run: |
+          if [ -d dist/client ]; then cp -r dist/client gh-pages-site; else cp -r .output/public gh-pages-site; fi
+
       - name: Upload the static site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .output/public
+          path: gh-pages-site
 
   deploy:
     needs: build
