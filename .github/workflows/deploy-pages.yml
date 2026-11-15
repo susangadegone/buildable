@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the project
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Bun
         uses: oven-sh/setup-bun@v2
@@ -29,19 +29,31 @@ jobs:
 
       - name: Set up GitHub Pages
         id: pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Build the static site
         env:
           GH_PAGES_BASE: ${{ steps.pages.outputs.base_path || '/' }}
-        run: bun run build:gh-pages
+        run: bunx vite build
 
       - name: Collect the static files
         run: |
-          if [ -d dist/client ]; then cp -r dist/client gh-pages-site; else cp -r .output/public gh-pages-site; fi
+          if [ -f .output/public/index.html ] || [ -f .output/public/_shell.html ]; then
+            SRC=.output/public
+          elif [ -f dist/client/index.html ] || [ -f dist/client/_shell.html ]; then
+            SRC=dist/client
+          else
+            echo "::error::No index.html found in .output/public or dist/client after the build."
+            ls -la .output/public dist/client 2>/dev/null || true
+            exit 1
+          fi
+          cp -r "$SRC" gh-pages-site
+          [ -f gh-pages-site/index.html ] || cp gh-pages-site/_shell.html gh-pages-site/index.html
+          cp gh-pages-site/index.html gh-pages-site/404.html
+          echo "Deploying files from $SRC"
 
       - name: Upload the static site
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: gh-pages-site
 
@@ -57,4 +69,4 @@ jobs:
     steps:
       - name: Publish to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
