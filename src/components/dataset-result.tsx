@@ -35,7 +35,7 @@ export function DatasetResult({ result, analysis, rank }: { result: Result; anal
         </div>
         <span className="readiness-badge" style={badgeStyle}>{LABEL_ICON[score.label]} {LABEL_TEXT[score.label]}</span>
       </header>
-      <p className="dataset-meta">{[dataset.publisher, dataset.category].filter(Boolean).join(" · ")} · <span className="dataset-id">{dataset.id}</span></p>
+      <p className="dataset-meta">{[dataset.publisher, dataset.category].filter(Boolean).join(" · ")} · <a className="dataset-id" href={dataset.datasf_url} target="_blank" rel="noopener noreferrer">{dataset.id}</a></p>
       <p className="dataset-explanation" dangerouslySetInnerHTML={{ __html: explainMatch(dataset, match, analysis, score) }} />
       <div className="dataset-row-strip"><span className="metric-key">What one row is</span><p>{dataset.one_row_is}</p></div>
       <dl className="dataset-metrics">

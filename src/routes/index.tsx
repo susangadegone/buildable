@@ -1,10 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import catalog from "@/data/catalog.json";
 import type { Catalog } from "@/lib/types";
-import { search } from "@/lib/search";
-import { DatasetResult } from "@/components/dataset-result";
+import { search, suggestAdjacent } from "@/lib/search";
+import { ResultsBrowser, ReadinessPill, type ResultFilter, type ResultSort } from "@/components/results-browser";
+import { ReadinessGuide } from "@/components/readiness-guide";
 
 const description = "Describe what you're building for San Francisco. See which city datasets fit, and whether you can actually ship with them today.";
 const examples = [
@@ -31,16 +33,26 @@ export const Route = createFileRoute("/")({
 export function BuildableScreen() {
   const [sentence, setSentence] = useState("");
   const [searchResult, setSearchResult] = useState<ReturnType<typeof search> | null>(null);
+  const [suggestions, setSuggestions] = useState<ReturnType<typeof suggestAdjacent>>([]);
+  const [filter, setFilter] = useState<ResultFilter>("all");
+  const [sort, setSort] = useState<ResultSort>("fit");
+  const [table, setTable] = useState(false);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
   const input = useRef<HTMLTextAreaElement>(null);
+  useEffect(() => { document.documentElement.dataset.theme = theme; }, [theme]);
 
   return (
-    <main className="buildable-screen" data-theme="dark">
+    <main className="buildable-screen" data-theme={theme}>
       <div className="buildable-content">
-        <h1 className="buildable-heading">Buildable</h1>
+        <div className="buildable-title-row"><h1 className="buildable-heading">Buildable</h1><Button variant="example" size="icon" className="theme-toggle" aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"} title={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"} onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>{theme === "dark" ? <Sun /> : <Moon />}</Button></div>
         <p className="buildable-intro">{description}</p>
         <form className="buildable-form" onSubmit={(event) => {
           event.preventDefault();
-          setSearchResult(search(catalog as Catalog, sentence));
+          const next = search(catalog as Catalog, sentence);
+          setSearchResult(next);
+          setSuggestions(suggestAdjacent(catalog as Catalog, sentence, next.results));
+          setFilter("all");
+          setSort("fit");
         }}>
           <textarea
             ref={input}
@@ -68,9 +80,11 @@ export function BuildableScreen() {
           </div>
         </form>
         <section className="buildable-results" aria-label="Dataset results" aria-live="polite">
-          {searchResult?.results.map((result, index) => <DatasetResult key={result.dataset.id} result={result} analysis={searchResult.analysis} rank={index + 1} />)}
-          {searchResult && searchResult.results.length === 0 && <p className="dataset-empty">No dataset in the catalogue matched that closely. Try naming the subject more plainly - evictions, bike crashes, food trucks, city salaries.</p>}
+          {searchResult && <ResultsBrowser results={searchResult.results} analysis={searchResult.analysis} filter={filter} sort={sort} table={table} onFilter={setFilter} onSort={setSort} onTable={setTable} />}
         </section>
+        {suggestions.length > 0 && <section className="adjacent-section" aria-labelledby="adjacent-heading"><h2 id="adjacent-heading">Also worth a look</h2><div className="adjacent-list">{suggestions.map(({ dataset, reason, score }) => <article className="adjacent-item" key={dataset.id}><div className="adjacent-title"><a href={dataset.datasf_url} target="_blank" rel="noopener noreferrer">{dataset.name}</a><ReadinessPill label={score.label} /></div><p>{reason}</p></article>)}</div></section>}
+        <ReadinessGuide />
+        <footer className="buildable-footer">Dataset names, IDs, portal categories, last-updated timestamps and row counts were read directly from DataSF's Socrata API on 2026-11-14 and are reproduced here unchanged - every ID links back to the live dataset so you can check any of them. Update rhythm, geometry, shape and the documented catches are our assessment, drawn from each dataset's own portal description. The readiness score is this app's opinion, not the city's. Catalogue covers {catalog.datasets.length} datasets chosen to span the themes SF civic projects actually reach for. DataSF publishes well over a thousand, so a dataset's absence here means we have not curated it, not that it does not exist.</footer>
       </div>
     </main>
   );

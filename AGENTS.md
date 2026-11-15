@@ -31,5 +31,7 @@ use the editor.
 
 - Keep the supplied catalogue in `src/data/catalog.json`, engine modules in `src/lib/`, and verification entry in `scripts/verify.ts`; separate dev-only verification from application imports.
 - Keep TypeScript strict mode enabled but disable `noPropertyAccessFromIndexSignature` and `noUncheckedIndexedAccess` to support the immutable supplied engine without rewriting it.
-- Keep `/` empty of results until submission; use the supplied search engine without re-ranking, with result presentation isolated in `src/components/dataset-result.tsx` to keep library logic immutable.
+- Keep `/` empty of results until submission; preserve search order for best fit, apply only user-selected presentation filtering/sorting in `src/components/results-browser.tsx`, and keep cards in `src/components/dataset-result.tsx` so engine logic remains immutable.
+- Compute adjacent suggestions from the submitted sentence and full search results, not the filtered view, so controls cannot alter the library's recommendations.
+- Switch the document and screen theme attributes together without persistence so portal controls inherit the active theme and dark remains the default.
 - Express exact theme inputs through relative OKLCH CSS variables on `data-theme`, with screen styles centralized in the global stylesheet.

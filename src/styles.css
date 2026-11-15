@@ -107,6 +107,44 @@
 .dataset-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 .dataset-empty { color: var(--secondary-text); font-size: 14px; line-height: 1.7; margin: 0; }
 .toaster [data-sonner-toast] { box-shadow: none; }
+.buildable-title-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.theme-toggle { min-width: 44px; min-height: 44px; }
+.results-toolbar { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; padding-bottom: 4px; }
+.results-count { margin: 0; font-size: 16px; font-weight: 600; width: 100%; }
+.results-showing { color: var(--secondary-text); font-weight: 400; }
+.results-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.results-filters button { min-height: 40px; height: auto; white-space: normal; }
+.results-filters button[aria-pressed="true"] { background: var(--raised); border-color: var(--accent); }
+.readiness-filter { color: var(--readiness-color); }
+.results-view-controls { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; width: 100%; }
+.results-sort { width: 220px; height: 44px; box-shadow: none; }
+.results-sort-menu { box-shadow: none; }
+.table-view-toggle { display: inline-flex; gap: 10px; align-items: center; min-height: 44px; font-size: 13px; cursor: pointer; }
+.results-table-scroll { max-width: 100%; overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+.results-table { width: 100%; min-width: 920px; border-collapse: collapse; font-size: 12px; line-height: 1.6; color: var(--foreground); }
+.results-table th, .results-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+.results-table thead { background: var(--raised); }
+.results-table tbody th { min-width: 220px; max-width: 280px; font-weight: 500; }
+.results-table td { white-space: nowrap; }
+.results-table small { display: block; color: var(--secondary-text); font-size: 11px; }
+.results-table a { color: var(--foreground); text-decoration: underline; text-underline-offset: 3px; }
+.adjacent-section, .readiness-guide { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+.adjacent-section h2, .readiness-guide h2 { margin: 0 0 20px; font-size: 18px; font-weight: 600; }
+.adjacent-list { display: grid; gap: 16px; }
+.adjacent-item { padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+.adjacent-title { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.adjacent-title a { color: var(--foreground); font-size: 14px; font-weight: 600; text-underline-offset: 3px; }
+.adjacent-item p { margin: 8px 0 0; color: var(--secondary-text); font-size: 13px; line-height: 1.7; }
+.guide-factors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.guide-factors dt { font-size: 14px; font-weight: 600; }
+.guide-factors dt span { color: var(--secondary-text); font-weight: 400; margin-left: 8px; font-size: 12px; }
+.guide-factors dd { margin: 6px 0 0; color: var(--secondary-text); font-size: 13px; line-height: 1.7; }
+.guide-thresholds { display: flex; flex-wrap: wrap; gap: 16px 24px; list-style: none; padding: 0; margin: 24px 0 16px; font-size: 13px; }
+.guide-thresholds strong { margin-left: 8px; }
+.guide-hard-gate { font-size: 13px; color: var(--secondary-text); line-height: 1.7; }
+.buildable-footer { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--secondary-text); font-size: 12px; line-height: 1.8; }
+:where(a, button, summary, [tabindex], [role="switch"]):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 @media (max-width: 600px) {
   .buildable-screen { padding: 32px 18px 48px; }
   .buildable-form { padding: 16px; }
@@ -115,4 +153,6 @@
   .dataset-header { flex-direction: column; gap: 8px; }
   .dataset-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .dataset-actions > * { white-space: normal; height: auto; min-height: 32px; }
+  .guide-factors { grid-template-columns: 1fr; gap: 16px; }
+  .adjacent-title { flex-direction: column; gap: 8px; }
 }
