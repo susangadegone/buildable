@@ -8,3 +8,4 @@
 - [x] Add cached, six-at-a-time public freshness checks with a six-second timeout and endpoint fallback.
 - [x] Patch only visible cards/table rows after stored rendering; verify success and failure behavior.
 - [x] Extend cached live checks with optional publisher cadence, attribution, and deduplicated footer licenses; verify unchanged cadence/scores and offline behavior.
+- [ ] Add and validate automatic GitHub Pages publishing with the existing optional static build.
