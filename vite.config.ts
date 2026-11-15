@@ -9,10 +9,28 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-export default defineConfig({
-  tanstackStart: {
-    // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
-    server: { entry: "server" },
-  },
-});
+// Optional GitHub Pages static build: active ONLY when GH_PAGES_BASE is set (e.g. "/buildable/").
+const rawGhPagesBase = process.env.GH_PAGES_BASE;
+const ghPagesBase = rawGhPagesBase
+  ? `/${rawGhPagesBase.replace(/^\/+|\/+$/g, "")}/`.replace(/^\/\/$/, "/")
+  : undefined;
+
+export default defineConfig(
+  ghPagesBase
+    ? {
+        vite: { base: ghPagesBase },
+        tanstackStart: {
+          server: { entry: "server" },
+          spa: { enabled: true, prerender: { outputPath: "/index.html" } },
+          prerender: { enabled: true, autoStaticPathsDiscovery: false },
+          pages: [{ path: "/" }],
+        },
+      }
+    : {
+        tanstackStart: {
+          // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
+          // nitro/vite builds from this
+          server: { entry: "server" },
+        },
+      },
+);
