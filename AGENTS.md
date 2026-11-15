@@ -30,3 +30,4 @@ use the editor.
 <!-- LOVABLE:END -->
 
 - Keep the supplied catalogue in `src/data/catalog.json`, engine modules in `src/lib/`, and verification entry in `scripts/verify.ts`; separate dev-only verification from application imports.
+- Keep TypeScript strict mode enabled but disable `noPropertyAccessFromIndexSignature` and `noUncheckedIndexedAccess` to support the immutable supplied engine without rewriting it.
