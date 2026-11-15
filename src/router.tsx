@@ -8,6 +8,8 @@ export const getRouter = () => {
 
   const router = createRouter({
     routeTree,
+    // Only the GitHub Pages build (GH_PAGES_BASE) changes BASE_URL from "/".
+    ...(import.meta.env.BASE_URL !== "/" ? { basepath: import.meta.env.BASE_URL } : {}),
     context: { queryClient },
     scrollRestoration: true,
     // Lets Query own freshness; set caching defaults on the QueryClient, not the router.
