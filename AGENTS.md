@@ -28,3 +28,5 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Keep the supplied catalogue in `src/data/catalog.json`, engine modules in `src/lib/`, and verification entry in `scripts/verify.ts`; separate dev-only verification from application imports.
