@@ -1,6 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import catalog from "@/data/catalog.json";
+import type { Catalog } from "@/lib/types";
+import { search } from "@/lib/search";
+import { DatasetResult } from "@/components/dataset-result";
 
 const description = "Describe what you're building for San Francisco. See which city datasets fit, and whether you can actually ship with them today.";
 const examples = [
@@ -26,6 +30,7 @@ export const Route = createFileRoute("/")({
 
 export function BuildableScreen() {
   const [sentence, setSentence] = useState("");
+  const [searchResult, setSearchResult] = useState<ReturnType<typeof search> | null>(null);
   const input = useRef<HTMLTextAreaElement>(null);
 
   return (
@@ -35,7 +40,7 @@ export function BuildableScreen() {
         <p className="buildable-intro">{description}</p>
         <form className="buildable-form" onSubmit={(event) => {
           event.preventDefault();
-          // Results intentionally remain empty in this screen-only stage.
+          setSearchResult(search(catalog as Catalog, sentence));
         }}>
           <textarea
             ref={input}
@@ -62,7 +67,10 @@ export function BuildableScreen() {
             ))}
           </div>
         </form>
-        <section className="buildable-results" aria-label="Dataset results" />
+        <section className="buildable-results" aria-label="Dataset results" aria-live="polite">
+          {searchResult?.results.map((result, index) => <DatasetResult key={result.dataset.id} result={result} analysis={searchResult.analysis} rank={index + 1} />)}
+          {searchResult && searchResult.results.length === 0 && <p className="dataset-empty">No dataset in the catalogue matched that closely. Try naming the subject more plainly - evictions, bike crashes, food trucks, city salaries.</p>}
+        </section>
       </div>
     </main>
   );
