@@ -7,6 +7,7 @@ import type { Catalog } from "@/lib/types";
 import { search, suggestAdjacent } from "@/lib/search";
 import { ResultsBrowser, ReadinessPill, type ResultFilter, type ResultSort } from "@/components/results-browser";
 import { ReadinessGuide } from "@/components/readiness-guide";
+import { useLiveLicenses } from "@/hooks/use-live-freshness";
 
 const description = "Describe what you're building for San Francisco. See which city datasets fit, and whether you can actually ship with them today.";
 const examples = [
@@ -39,6 +40,7 @@ export function BuildableScreen() {
   const [table, setTable] = useState(false);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const input = useRef<HTMLTextAreaElement>(null);
+  const licenses = useLiveLicenses(searchResult?.results.map(result => result.dataset.id) ?? []);
   useEffect(() => { document.documentElement.dataset.theme = theme; }, [theme]);
 
   return (
@@ -84,7 +86,7 @@ export function BuildableScreen() {
         </section>
         {suggestions.length > 0 && <section className="adjacent-section" aria-labelledby="adjacent-heading"><h2 id="adjacent-heading">Also worth a look</h2><div className="adjacent-list">{suggestions.map(({ dataset, reason, score }) => <article className="adjacent-item" key={dataset.id}><div className="adjacent-title"><a href={dataset.datasf_url} target="_blank" rel="noopener noreferrer">{dataset.name}</a><ReadinessPill label={score.label} /></div><p>{reason}</p></article>)}</div></section>}
         <ReadinessGuide />
-        <footer className="buildable-footer">Dataset names, IDs, portal categories, last-updated timestamps and row counts were read directly from DataSF's Socrata API on 2026-11-14 and are reproduced here unchanged - every ID links back to the live dataset so you can check any of them. Update rhythm, geometry, shape and the documented catches are our assessment, drawn from each dataset's own portal description. The readiness score is this app's opinion, not the city's. Catalogue covers {catalog.datasets.length} datasets chosen to span the themes SF civic projects actually reach for. DataSF publishes well over a thousand, so a dataset's absence here means we have not curated it, not that it does not exist.</footer>
+        <footer className="buildable-footer">Dataset names, IDs, portal categories, last-updated timestamps and row counts were read directly from DataSF's Socrata API on 2026-11-14 and are reproduced here unchanged - every ID links back to the live dataset so you can check any of them. Update rhythm, geometry, shape and the documented catches are our assessment, drawn from each dataset's own portal description. The readiness score is this app's opinion, not the city's. Catalogue covers {catalog.datasets.length} datasets chosen to span the themes SF civic projects actually reach for. DataSF publishes well over a thousand, so a dataset's absence here means we have not curated it, not that it does not exist.{licenses.length > 0 && <div className="publisher-licenses">{licenses.map(license => <p key={license}>Publisher license: {license}</p>)}</div>}</footer>
       </div>
     </main>
   );

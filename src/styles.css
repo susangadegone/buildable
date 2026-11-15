@@ -103,6 +103,9 @@
 .score-factor progress::-webkit-progress-value { background: var(--accent); }
 .score-factor progress::-moz-progress-bar { background: var(--accent); }
 .score-figure { text-align: right; }
+.publisher-cadence-note { grid-column: 1 / -1; color: var(--secondary-text); font-size: 11px; line-height: 1.6; overflow-wrap: anywhere; }
+.publisher-licenses { margin-top: 12px; overflow-wrap: anywhere; }
+.publisher-licenses p { margin: 4px 0 0; }
 .hard-gate { margin: 16px 0 0; color: var(--secondary-text); line-height: 1.7; }
 .dataset-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 .dataset-empty { color: var(--secondary-text); font-size: 14px; line-height: 1.7; margin: 0; }

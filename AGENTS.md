@@ -37,3 +37,4 @@ use the editor.
 - Express exact theme inputs through relative OKLCH CSS variables on `data-theme`, with screen styles centralized in the global stylesheet.
 - Run public live freshness checks only from mounted result cards/table rows using a session-memory queue with six concurrent checks and a shared six-second AbortController deadline per primary/fallback pair; failures retain stored results without error UI.
 - Apply newer live dates to an immutable dataset copy and call the supplied scoreDataset(copy, liveDate) only for that result; preserve snapshot-based search/filter/suggestion inputs to prevent live updates from changing matching or unmounting filtered rows.
+- Read optional publisher metadata in the same cached freshness check; compare cadence without mutating or rescoring it, and let the footer observe deduplicated licenses without starting requests so offline rendering and the queue limits remain intact.
